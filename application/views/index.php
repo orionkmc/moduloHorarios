@@ -1,23 +1,4 @@
-<div>
-	<!--inicio de pestañas-->
-	<div class="col-lg-12">
-		<h1 class="page-header">Horarios</h1><br>
-	</div>
-	<ul class="nav nav-tabs nav-justified nav-pills">
-		<li class="active"><a href="#">Horarios</a></li>
-		<li><a href="#">Edificio/Salon</a></li>
-		<li class="dropdown">
-			<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Reportes <span class="caret"></span> </a>
-			<ul class="dropdown-menu">
-				<li><a href="#">Salon</a></li>
-				<li><a href="#">Docente</a></li>
-				<li><a href="#">Edificio</a></li>
-			</ul>
-		</li>
-	</ul>
-
 <img src="<?= base_url('assets/images/leyenda.png') ?>">
-   
 <div id="aqui2"></div>
 <div class="row">
     <div class="table-responsive">
@@ -28,7 +9,7 @@
                     <th>HOR<span>A</span></th>
                     <th>Lun<span>es</span></th>
                     <th>Mar<span>tes</span></th>
-                    <th>Mi&eacute;r<span>coles</span></th>
+                    <th>Mi&eacute;<span>rcoles</span></th>
                     <th>Jue<span>ves</span></th>
                     <th>Vie<span>rnes</span></th>
                     <th>S&aacute;b<span>ado</span></th>
@@ -204,7 +185,7 @@
                 </tr>
                 <tr>
                     <td class="hora">20:00 a 20:45</td>
-                   	<td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -232,10 +213,5 @@
                     <td></td>
                     <td></td>
                 </tr>
-                
             </tbody>
         </table>
-   </div>
-</div>
-
-   
