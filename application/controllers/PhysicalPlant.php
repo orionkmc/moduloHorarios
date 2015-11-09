@@ -9,7 +9,7 @@ class PhysicalPlant extends CI_Controller
         $data['physicalPlant'] = 'active';
         $data['reports'] = '';
         $this->load->view('base/head', $data);
-        //$this->load->view('index');
+        $this->load->view('PhysicalPlant/view');
         $this->load->view('base/foot');
     }
 }

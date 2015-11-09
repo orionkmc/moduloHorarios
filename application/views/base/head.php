@@ -16,10 +16,19 @@ require_once"../script/verifSesion.php";
 	<link href="<?= base_url('../css/template/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet') ?>">
 	<link href="<?= base_url('../css/template/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet') ?>">
 	<link href="<?= base_url('../css/template/bower_components/datepicker/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet') ?>">
-	<!-- Fin plantilla -->
-	<link href="/css/popup.css" rel="stylesheet" type="text/css" />
+
+<!-- Fin plantilla -->
+
+<!-- Inicio css Modulos Gestion Planificaion -->
+	<link href="<?= base_url('../css/palete.css') ?>" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('../css/sigpa.css') ?>" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('../css/popup.css') ?>" rel="stylesheet" type="text/css" />
+<!-- fin css Modulos Gestion Planificaion -->
+
+<!-- Inicio css Modulos Horarios -->
 	<link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet" type="text/css" />
-	<script src="<?= base_url('../lib/dinamico.js') ?>"></script>
+	<script src="<?= base_url('assets/js/dinamico.js') ?>"></script>
+<!-- Fin css Modulos Horarios -->
 </head>
 <body>
 	<div id="wrapper">
