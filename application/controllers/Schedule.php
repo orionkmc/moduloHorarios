@@ -7,7 +7,7 @@ class Schedule extends CI_Controller
 	{
         $data['schedule'] = 'active';
         $data['physicalPlant'] = '';
-        $data['reports'] = '';
+        $data['active'] = '';
 		$this->load->view('base/head', $data);
 		$this->load->view('index');
 		$this->load->view('base/foot');

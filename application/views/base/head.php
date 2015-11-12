@@ -16,7 +16,7 @@ require_once"../script/verifSesion.php";
 	<link href="<?= base_url('../css/template/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet') ?>">
 	<link href="<?= base_url('../css/template/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet') ?>">
 	<link href="<?= base_url('../css/template/bower_components/datepicker/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet') ?>">
-
+	<script src="<?= base_url('../css/template/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <!-- Fin plantilla -->
 
 <!-- Inicio css Modulos Gestion Planificaion -->
@@ -43,7 +43,7 @@ require_once"../script/verifSesion.php";
 				<ul class="nav nav-tabs nav-justified nav-pills">
 					<li class="<?= $schedule ?>"><a href="<?= site_url('schedule/index') ?>">Horarios</a></li>
 					<li class="<?= $physicalPlant ?>" ><a href="<?= site_url('PhysicalPlant/index') ?>">Edificio/Salon</a></li>
-					<li class="dropdown <?= $reports ?>">
+					<li class="dropdown <?= $active ?>">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Reportes <span class="caret"></span> </a>
 						<ul class="dropdown-menu">
 							<li><a href="<?= site_url('Reports/index') ?>">Salon</a></li>

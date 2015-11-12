@@ -46,34 +46,3 @@
         </div>
     </div>
 </div>
-<script>
-    $(".dataTable").dataTable( {
-  "responsive": true,
-  "aLengthMenu": [[15, 30, -1], [15, 30, "Todos"]],
-  "language": {
-   "sProcessing": "Procesando...",
-   "sLengthMenu": "_MENU_ elementos por página",
-   "sZeroRecords": "No hay elementos",
-   "sEmptyTable": "No hay elementos",
-   "sInfo": "Total: _MAX_ elementos (_START_-_END_)",
-   "sInfoEmpty": "No hay elementos",
-   "sInfoFiltered": "(se encontraron _TOTAL_ coincidencias)",
-   "sInfoPostFix": "",
-   "sSearch": "Buscar:",
-   "sUrl": "",
-   "sInfoThousands": ",",
-   "sLoadingRecords": "Cargando...",
-   "oPaginate": {
-    "sFirst": "<i class=\"fa fa-angle-double-left fa-fw\" title=\"Primera página\"></i>",
-    "sLast": "<i class=\"fa fa-angle-double-right fa-fw\" title=\"Última página\"></i>",
-    "sPrevious": "<i class=\"fa fa-angle-left fa-fw\" title=\"Anterior\"></i>",
-    "sNext": "<i class=\"fa fa-angle-right fa-fw\" title=\"Siguiente\"></i>"
-   },
-   "oAria": {
-    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
-    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-   }
-  },
-  "retrieve": true
- });
-</script>

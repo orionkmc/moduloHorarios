@@ -7,10 +7,12 @@ class Reports extends CI_Controller
     {
         $data['schedule'] = '';
         $data['physicalPlant'] = '';
-        $data['reports'] = 'class="active"';
+        $data['active'] = 'active';
+
         $this->load->view('base/head', $data);
-        //$this->load->view('index');
+        
+        
+
         $this->load->view('base/foot');
-        echo "";
     }
 }
