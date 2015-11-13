@@ -5,10 +5,7 @@ class Schedule extends CI_Controller
 {
 	public function index()
 	{
-        $data['schedule'] = 'active';
-        $data['physicalPlant'] = '';
-        $data['active'] = '';
-		$this->load->view('base/head', $data);
+		$this->load->view('base/head');
 		$this->load->view('index');
 		$this->load->view('base/foot');
 	}

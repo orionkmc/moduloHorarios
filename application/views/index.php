@@ -1,4 +1,4 @@
-<img src="<?= base_url('assets/images/leyenda.png') ?>">
+<!-- <img src="<?= base_url('assets/images/leyenda.png') ?>"> -->
 <div id="aqui2"></div>
 <div class="row">
     <div class="table-responsive">
@@ -35,7 +35,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td></tr>
+                    <td></td>
+                </tr>
                 <tr>
                     <td class="hora">8:40 a 9:25</td>
                     <td></td>
@@ -44,7 +45,8 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td></tr>
+                    <td></td>
+                </tr>
                 <tr>
                     <td class="hora">9:25 a 10:10</td>
                     <td></td>

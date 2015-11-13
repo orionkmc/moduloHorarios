@@ -11,19 +11,19 @@
                 {
                     html+=
                     '<tr>'+
-                        '<td class="text-center">' + json[post].edificio + '</td>'+
-                        '<td>'+
-                            '<div class="row block-center">'+
-                                '<div class="col-xs-7 col-sm-7 col-md-6 col-lg-6"></div>'+
-                                '<div class="col-xs-5 col-sm-5 col-md-6 col-lg-6 block-center">'+
-                                    '<i class="fa fa-search fa-fw consultar" title="Mas información" ></i>'+
+                        '<td>' + 
+                            
+                                '<div class="col-xs-7 col-sm-7 col-md-6 col-lg-7">'+
+                                    json[post].edificio +
+                                '</div>'+
+                                '<div class="col-xs-5 col-sm-5 col-md-6 col-lg-5 text-center">'+
+                                    '<a href="<?=  site_url('Room/view') ?>"><i class="fa fa-search fa-fw consultar" title="Ver salon" ></i></a>'+
                                     '<i class="fa fa-pencil fa-fw editar" title="Editar" ></i>'+
                                     '<i class="fa fa-trash-o fa-fw eliminar" title="Eliminar"></i>'+
                                 '</div>'+
-                            '</div>'+
+                            
                         '</td>'+
                     '</tr>';
-
                 }
             $("tbody").html(html);
             });
@@ -51,11 +51,11 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
 
-                <tbody></tbody>
+                <tbody>
+                </tbody>
                 <tfoot>
                     <tr>
                         <td class="text-center" title="Nuevo profesor" style="cursor: pointer" colspan="5"><i class="fa fa-plus fa-fw editar"></i></td>

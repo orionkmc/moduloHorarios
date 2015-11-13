@@ -41,9 +41,30 @@ require_once"../script/verifSesion.php";
 				</div>
 
 				<ul class="nav nav-tabs nav-justified nav-pills">
-					<li class="<?= $schedule ?>"><a href="<?= site_url('schedule/index') ?>">Horarios</a></li>
-					<li class="<?= $physicalPlant ?>" ><a href="<?= site_url('PhysicalPlant/index') ?>">Edificio/Salon</a></li>
-					<li class="dropdown <?= $active ?>">
+					<li>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Horario<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<?= site_url('schedule/index') ?>">Secciones</a></li>
+							<li><a href="<?= site_url('schedule/index') ?>">Profesores</a></li>
+						</ul>
+					</li>
+					<li>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edificio<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<?= site_url('Building/view') ?>">Ver</a></li>
+							<li><a href="<?= site_url('Building/view') ?>">Insertar</a></li>
+						</ul>
+					</li>
+
+					<li>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Salon<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="<?= site_url('Room/view') ?>">Ver</a></li>
+							<li><a href="<?= site_url('Room/view') ?>">Insertar</a></li>
+						</ul>
+					</li>
+
+					<li>
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Reportes <span class="caret"></span> </a>
 						<ul class="dropdown-menu">
 							<li><a href="<?= site_url('Reports/index') ?>">Salon</a></li>
@@ -52,3 +73,11 @@ require_once"../script/verifSesion.php";
 						</ul>
 					</li>
 				</ul>
+
+
+				<style>
+					.dropdown-menu
+					{
+						width: 100%;
+					}
+				</style>
