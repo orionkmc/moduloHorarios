@@ -12,7 +12,8 @@ var dataSet = [
                 "columns": [
 
                     { "data": "id" },
-                    { "data": "edificio" }
+                    { "data": "edificio" },
+                    { "data": "variable" }
                 ]
             });
         });
@@ -44,12 +45,14 @@ var dataSet = [
                     <tr>
                         <th>id</th>
                         <th>Nombre</th>
+                        <th>acciones</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>id</th>
                         <th>nombre</th>
+                        <th>acciones</th>
                     </tr>
                 </tfoot>
             </table>
