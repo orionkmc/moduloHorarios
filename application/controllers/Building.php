@@ -19,7 +19,13 @@ class Building extends CI_Controller
     
     public function building($_id)
     {
+        $this->load->helper('json');
         $post = $this->Building_model->get($_id);
-        echo '{"data":',  json_encode($post),'}';
+        $datatables = add_json($post);
+        print_r($datatables);
+
+        /*$post[0]->kuai = 'orion';
+        print_r($post);*/
+        /*echo '{"data":',  json_encode($post),'}';*/
     }
 }

@@ -1,24 +1,10 @@
 <script>
-function format ( d ) {
-    // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>Full name:</td>'+
-            '<td>'+d.name+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extension number:</td>'+
-            '<td>'+d.extn+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extra info:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
-        '</tr>'+
-    '</table>';
-}
+var dataSet = [
+    [ "Tiger Nixon", "System Architect"],
+];
    $(document).ready(function()
     {
-        /*$("#headquarters").on("change",function(){
+        $("#headquarters").on("change",function(){
             var headquarters = $("#headquarters").val()
             $('#example').DataTable({
                 "destroy": true,
@@ -29,43 +15,6 @@ function format ( d ) {
                     { "data": "edificio" }
                 ]
             });
-        });*/
-
-        $("#headquarters").on("change",function(){
-            var headquarters = $("#headquarters").val()
-            var table = $('#example').DataTable( {
-                "ajax": "building/"+headquarters,
-                "columns": [
-                    {
-                        "className":      'details-control',
-                        "orderable":      false,
-                        "data":           null,
-                        "defaultContent": ''
-                    },
-                    { "data": "name" },
-                    { "data": "position" },
-                    { "data": "office" },
-                    { "data": "salary" }
-                ],
-                "order": [[1, 'asc']]
-            } );
-     
-            // Add event listener for opening and closing details
-            $('#example tbody').on('click', 'td.details-control', function () {
-                var tr = $(this).closest('tr');
-                var row = table.row( tr );
-         
-                if ( row.child.isShown() ) {
-                    // This row is already open - close it
-                    row.child.hide();
-                    tr.removeClass('shown');
-                }
-                else {
-                    // Open this row
-                    row.child( format(row.data()) ).show();
-                    tr.addClass('shown');
-                }
-            } );
         });
     })
 </script>
@@ -94,13 +43,13 @@ function format ( d ) {
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>position</th>
+                        <th>Nombre</th>
                     </tr>
                 </thead>
                 <tfoot>
-                     <tr>
+                    <tr>
                         <th>id</th>
-                        <th>position</th>
+                        <th>nombre</th>
                     </tr>
                 </tfoot>
             </table>
