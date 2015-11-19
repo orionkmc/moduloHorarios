@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Room extends CI_Controller 
+class Class_room extends CI_Controller 
 {
     public function __construct()
     {
@@ -14,7 +14,7 @@ class Room extends CI_Controller
     {
         $data['headquarters'] = $this->Headquarters_model->get_all();
         $this->load->view('base/head', $data);
-        $this->load->view('PhysicalPlant/room/view', $data);
+        $this->load->view('physicalPlant/class_room/view', $data);
         $this->load->view('base/foot');
     }
     

@@ -28,6 +28,7 @@
     $(document).ready(loading(false));
     formularios();
 </script>
+
 <script>
 $(document).ready(function(){
     $(".dataTable").dataTable( {

@@ -44,23 +44,23 @@ require_once"../script/verifSesion.php";
 					<li>
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Horario<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="<?= site_url('schedule/index') ?>">Secciones</a></li>
-							<li><a href="<?= site_url('schedule/index') ?>">Profesores</a></li>
+							<li><a href="<?= site_url('Schedule/index') ?>">Secciones</a></li>
+							<li><a href="<?= site_url('Schedule/index') ?>">Profesores</a></li>
 						</ul>
 					</li>
 					<li>
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Edificio<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<?= site_url('Building/view') ?>">Ver</a></li>
-							<li><a href="<?= site_url('Building/view') ?>">Insertar</a></li>
+							<li><a href="<?= site_url('Building/insert') ?>">Insertar</a></li>
 						</ul>
 					</li>
 
 					<li>
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Salon<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="<?= site_url('Room/view') ?>">Ver</a></li>
-							<li><a href="<?= site_url('Room/view') ?>">Insertar</a></li>
+							<li><a href="<?= site_url('Class_room/view') ?>">Ver</a></li>
+							<li><a href="<?= site_url('Class_room/view') ?>">Insertar</a></li>
 						</ul>
 					</li>
 

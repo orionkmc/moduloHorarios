@@ -6,7 +6,7 @@ class Schedule extends CI_Controller
 	public function index()
 	{
 		$this->load->view('base/head');
-		$this->load->view('index');
+		$this->load->view('schedules/index');
 		$this->load->view('base/foot');
 	}
 }

@@ -3,7 +3,7 @@
     {
         $("#headquarters").change(function(){
             var headquarters = $("#headquarters").val()
-            $.get("<?php echo site_url('Room/Building/"+ headquarters +"') ?>", "", function(data)
+            $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
             {
                 var json = JSON.parse(data);
                 var html = '<option value="0">Edificio</option>';
@@ -64,9 +64,9 @@
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>id</th>
-                        <th>position</th>
-                        <th>position</th>
+                        <td class="text-center" title="Nuevo Salon" colspan="3">
+                            <a href=""><i class="fa fa-plus fa-fw editar"></i></a>
+                        </td>
                     </tr>
                 </tfoot>
             </table>
