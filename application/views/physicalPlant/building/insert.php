@@ -20,7 +20,7 @@
                 $("#building").removeAttr("disabled");
                 $("#submit").removeAttr("disabled");
             }
-            $("#building").attr("value","")
+            $("#building").val("")
         });
 
         $("#building").keyup(function(){
