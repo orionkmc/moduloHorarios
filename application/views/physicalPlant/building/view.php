@@ -4,7 +4,7 @@
         var headquarters = $("#headquarters").val()
         $('#example').DataTable({
             "destroy": true,
-            "ajax": "building/" + headquarters,
+            "ajax": '<?php echo base_url(); ?>index.php/Building/building/'+ headquarters,
             "columns": [
                 { "data": "id" },
                 { "data": "edificio" },
@@ -16,7 +16,7 @@
             var headquarters = $("#headquarters").val()
             $('#example').DataTable({
                 "destroy": true,
-                "ajax": "building/" + headquarters,
+                "ajax": '<?php echo base_url(); ?>index.php/Building/building/'+ headquarters,
                 "columns": [
                     { "data": "id" },
                     { "data": "edificio" },

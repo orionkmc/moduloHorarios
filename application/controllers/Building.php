@@ -9,7 +9,7 @@ class Building extends CI_Controller
         $this->load->model('Headquarters_model');
         $this->load->model('Building_model');
     }
-    public function view($current_headquarters = 3)
+    public function view($current_headquarters = 0)
     {
         $data['headquarters'] = $this->Headquarters_model->get_all();
         $data['current_headquarters'] = $current_headquarters;
