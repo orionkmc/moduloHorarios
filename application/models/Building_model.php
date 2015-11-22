@@ -46,6 +46,10 @@ class Building_model extends CI_Model
 
     function delete($id) 
     {
+        if (!$this->db->where('cod_edi', $id)->delete('salones')) {
+            return FALSE;
+        }
+        
         if ($this->db->where('id', $id)->delete('edificio')) 
         {
             return TRUE;
