@@ -1,5 +1,14 @@
 <script>
-   $(document).ready(function()
+    $(document).ready(function()
+    {
+        loadData();
+        $("#headquarters").on("ready change",function(){
+            loadData();
+        });
+    })
+
+    //inicio carga los edificios x ajax
+    function loadData()
     {
         var headquarters = $("#headquarters").val()
         $('#example').DataTable({
@@ -11,20 +20,8 @@
                 { "data": "variable" }
             ]
         });
-
-        $("#headquarters").on("ready change",function(){
-            var headquarters = $("#headquarters").val()
-            $('#example').DataTable({
-                "destroy": true,
-                "ajax": '<?php echo base_url(); ?>index.php/Building/building/'+ headquarters,
-                "columns": [
-                    { "data": "id" },
-                    { "data": "edificio" },
-                    { "data": "variable" }
-                ]
-            });
-        });
-    })
+    }
+//fin carga los edificios x ajax
 </script>
 
 
@@ -35,7 +32,7 @@
 </div>
 
 <div class="form-group">
-    <select id="headquarters" class="form-control">
+    <select id="headquarters" class="form-control" autofocus="on">
         <option value="0">Sede</option>
         <?php foreach ($headquarters as $key): ?>
             <option value="<?= $key->id ?>" <?= ($key->id == $current_headquarters)  ? "selected" : "" ?>><?= $key->nombre ?></option>
