@@ -27,7 +27,7 @@ require_once"../script/verifSesion.php";
 
 <!-- Inicio css Modulos Horarios -->
 	<link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet" type="text/css" />
-	<script src="<?= base_url('assets/js/dinamico.js') ?>"></script>
+	<script src="<?= base_url('assets/js/script.js') ?>"></script>
 <!-- Fin css Modulos Horarios -->
 </head>
 <body>
