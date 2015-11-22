@@ -19,6 +19,7 @@ class Building extends CI_Controller
     }
     public function insert($path=1)
     {
+        $this->load->library('form_validation');
         if ($path == 1)
         {
             $data['headquarters'] = $this->Headquarters_model->get_all();
@@ -28,12 +29,26 @@ class Building extends CI_Controller
         }
         elseif ($path == 2) 
         {
-            /*$this->form_validation->set_rules('Name', 'Name', 'required');
-            $this->form_validation->set_rules('Rif', 'R.I.F.', 'required');*/
+            $this->form_validation->set_message("greater_than[0]", "No has seleccionado ninguna %s.");
+            $this->form_validation->set_message("required", "El campo %s es requerido.");
 
-            if ($this->Building_model->insert($this->input))
+            $this->form_validation->set_rules('headquarters', 'Sede', 'greater_than[0]');
+            $this->form_validation->set_rules('building', 'Edificio', 'required');
+            if ($this->form_validation->run() == FALSE) 
             {
-                redirect('Building/view/'.$this->input->post('headquarters'), 'refresh');
+                $this->insert();
+            }
+            else
+            {
+                if ($this->Building_model->insert($this->input))
+                {
+                    redirect('Building/view/'.$this->input->post('headquarters'), 'refresh');
+                }
+                else
+                {
+                    echo "<script>alert('Los datos ya existen');</script>";
+                    $this->insert();
+                }
             }
         }
     }

@@ -1,5 +1,5 @@
 <script>
-$(document).ready(function()
+    $(document).ready(function()
     {
         var headquarters = $("#headquarters").val();
         if (headquarters == 0)
@@ -14,12 +14,11 @@ $(document).ready(function()
             {
                 $("#building").attr("disabled","disabled");
                 $("#submit").attr("disabled","disabled");
-            };
-            if(headquarters != 0)
+            }
+            else if(headquarters != 0)
             {
                 $("#building").removeAttr("disabled");
-                $("#submit").removeAttr("disabled");
-            }
+            };
 
             $("#building").val("")
             $("#building1").attr("class", "form-group has-feedback");
@@ -35,6 +34,7 @@ $(document).ready(function()
                     {
                         $("#building1").attr("class", "form-group has-feedback");
                         $("#building3").attr("class", "glyphicon glyphicon-pencil form-control-feedback");
+                        $("#submit").attr("disabled","disabled");
                     };
 
                     if((json.length === 0)&&(building != ''))
@@ -73,6 +73,7 @@ $(document).ready(function()
 
 <div class="row">
     <div class="col-lg-12">
+        
         <?= form_open("Building/insert/2") ?>
             <div class="form-group">
                 <select id="headquarters" class="form-control" name="headquarters" required="required" autofocus="on">
@@ -81,12 +82,31 @@ $(document).ready(function()
                         <option value="<?= $key->id ?>"><?= $key->nombre ?></option>
                     <?php endforeach ?>
                 </select>
+                <br>
+                <?php if (form_error('headquarters')): ?>
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <?= form_error('headquarters') ?>
+                    </div>
+                <?php endif ?>
             </div>
 
             <div id="building1" class="form-group has-feedback">
                 <?= form_input(array('name'=> 'building', 'id' => 'building', 'value' => '', 'class' => 'form-control','placeholder'=>'Nombre del Edificio')) ?>
                 <span id="building3" class="glyphicon glyphicon-pencil form-control-feedback" aria-hidden="true"></span>
                 <p class="help-block">Debe colocar el nombre o vocal del edificio, Sin anteponer la palabra edificio. Ej: A</p>
+                <?php if (form_error('building')): ?>
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <?= form_error('building') ?>
+                    </div>
+                <?php endif ?>
             </div>
 
             <div class="form-group text-center">
