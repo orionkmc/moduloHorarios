@@ -33,13 +33,15 @@
                 {
                     if (building == json[i].edificio)
                     {
-                        $("#building").css("border-color", "red");
+                        $("#building1").attr("class", "form-group has-error has-feedback");
+                        $("#building3").attr("class", "glyphicon glyphicon-remove form-control-feedback");
                         $("#submit").attr("disabled","disabled");
-                        return
+                        return false;
                     };
                     if (building != json[i].edificio)
                     {
-                        $("#building").css("border-color", "green");
+                        $("#building1").attr("class", "form-group has-success has-feedback");
+                        $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
                         $("#submit").removeAttr("disabled");
                     };
 
@@ -48,6 +50,12 @@
         });
     });
 </script>
+<style>
+    input:focus
+    {
+            outline-style: none;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Nuevo Edificio</h1>
@@ -66,14 +74,15 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div id="building1" class="form-group has-feedback">
                 <?= form_input(array('name'=> 'building', 'id' => 'building', 'value' => '', 'class' => 'form-control','placeholder'=>'Nombre del Edificio')) ?>
+                <span id="building3" class="glyphicon glyphicon-pencil form-control-feedback" aria-hidden="true"></span>
                 <p class="help-block">Debe colocar el nombre o vocal del edificio, Sin anteponer la palabra edificio. Ej: A</p>
             </div>
+
             <div class="form-group text-center">
                 <input id="submit" type="submit" value="Guardar" class="btn btn-lg btn-primary" >
                 <input type="button" value="Regresar" class="btn btn-lg">
-                <input type="reset" value="reset" class="btn btn-lg">
             </div>
         <?= form_close() ?>
     </div>
