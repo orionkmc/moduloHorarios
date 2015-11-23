@@ -59,4 +59,31 @@ class Building_model extends CI_Model
             return FALSE;
         }
     }
+
+    function get_by_id($id) 
+    {
+        $query = $this->db->where('id', $id)->get('edificio');
+        if ($query->num_rows() == 0) 
+        {
+            return 0;
+        }
+        return $query->result();
+    }
+
+    function update($_data) 
+    {
+        $data = array(
+            'edificio' => $_data->post('building'),
+            'id' => $_data->post('id')
+        );
+
+        if ($this->db->where('id', $_data->post('id'))->update('edificio', $data)) 
+        {
+            return TRUE;
+        }
+        else 
+        {
+            return FALSE;
+        }
+    }
 }
