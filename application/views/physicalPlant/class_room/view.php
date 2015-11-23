@@ -1,6 +1,19 @@
 <script>
    $(document).ready(function()
     {
+        var headquarters = $("#headquarters").val()
+        $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
+        {
+            var json = JSON.parse(data);
+            var html = '<option value="0">Edificio</option>';
+            for(post in json)
+            {   
+                html += '<option value="' + json[post].id + '"' + ((json[post].id == <?= isset($current_building[0]->id) ? $current_building[0]->id : 0 ?>) ? ' selected="selected" ' : '') + '>' + json[post].edificio + '</option>';
+            }
+            $("#building").html(html);
+            load_building();
+        });
+
         $("#headquarters").change(function(){
             var headquarters = $("#headquarters").val()
             $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
@@ -10,7 +23,7 @@
                 for(post in json)
                 {
                     html+=
-                    '<option value="'+ json[post].id + '">'+
+                    '<option value="'+ json[post].id + '" >'+
                     json[post].edificio +
                     '</option>';
                 }
@@ -19,18 +32,22 @@
         });
 
         $("#building").on("change",function(){
-            var building = $("#building").val()
+           load_building();
+        });
+    });
+    function load_building()
+    {
+        var building = $("#building").val();
             $('#example').DataTable({
                 "destroy": true,
-                "ajax": "class_room/"+building,
+                "ajax": '<?= base_url(); ?>index.php/Class_room/class_room/'+ building,
                 "columns": [
                     { "data": "id" },
                     { "data": "salon" },
                     { "data": "tipo" }
                 ]
             });
-        });
-    })
+    }
 </script>
 
 <div class="row">
@@ -41,11 +58,13 @@
 
 <div class="form-group">
     <select id="headquarters" class="form-control">
-        <option value="">Sede</option>
+        <option value="0">Sede</option>
         <?php foreach ($headquarters as $key): ?>
-            <option value="<?= $key->id ?>"><?= $key->nombre ?></option>
+            <option value="<?= $key->id ?>" <?= (($current_building !=0) && ($key->id == $current_building[0]->id_sede))  ? "selected" : "" ?> ><?= $key->nombre ?></option>
         <?php endforeach ?>
     </select>
+</div>
+<div class="form-group">
     <select id="building" class="form-control">
         <option value="">Edificio</option>
     </select>
