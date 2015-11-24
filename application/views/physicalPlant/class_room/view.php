@@ -38,6 +38,7 @@
     function load_building()
     {
         var building = $("#building").val();
+        $("#more").attr("href", "<?= site_url(); ?>/Class_room/insert/"+ building);
             $('#example').DataTable({
                 "destroy": true,
                 "ajax": '<?= base_url(); ?>index.php/Class_room/class_room/'+ building,
@@ -57,7 +58,7 @@
 </div>
 
 <div class="form-group">
-    <select id="headquarters" class="form-control">
+    <select id="headquarters" class="form-control" autofocus="on">
         <option value="0">Sede</option>
         <?php foreach ($headquarters as $key): ?>
             <option value="<?= $key->id ?>" <?= (($current_building !=0) && ($key->id == $current_building[0]->id_sede))  ? "selected" : "" ?> ><?= $key->nombre ?></option>
@@ -84,7 +85,7 @@
                 <tfoot>
                     <tr>
                         <td class="text-center" title="Nuevo Salon" colspan="3">
-                            <a href=""><i class="fa fa-plus fa-fw editar"></i></a>
+                            <?= anchor('','<i class="fa fa-plus fa-fw editar"></i>', 'id="more"') ?>
                         </td>
                     </tr>
                 </tfoot>
