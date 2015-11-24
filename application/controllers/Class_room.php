@@ -34,7 +34,6 @@ class Class_room extends CI_Controller
         }
         elseif ($path == 2) 
         {
-            print_r($this->input->post());
             /*$this->form_validation->set_message("greater_than[0]", "No has seleccionado ninguna %s.");
             $this->form_validation->set_message("required", "El campo %s es requerido.");
 
@@ -45,17 +44,17 @@ class Class_room extends CI_Controller
                 $this->insert();
             }
             else
-            {
-                if ($this->Building_model->insert($this->input))
+            {*/
+                if ($this->Class_room_model->insert($this->input))
                 {
-                    redirect('Building/view/'.$this->input->post('headquarters'), 'refresh');
+                    redirect('Class_room/view/'.$this->input->post('building'), 'refresh');
                 }
                 else
                 {
                     echo "<script>alert('Los datos ya existen');</script>";
                     $this->insert();
                 }
-            }*/
+            /*}*/
         }
     }
 

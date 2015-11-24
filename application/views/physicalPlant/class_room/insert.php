@@ -34,6 +34,7 @@
 
                     $('#building').on("change", function(){
                         var building = $("#building").val();
+                        
                         if (building == 0) 
                         {
                             $("#classroom_type").val(0);
@@ -106,6 +107,7 @@
                 $("#building").html(html);
 
                 var building = $("#building").val();
+                $("#building_hidden").attr("value", building);
                 $.get("<?php echo site_url('Class_room/class_room/"+ building +"') ?>", "", function(data)
                 {
                     json = JSON.parse(data);
@@ -127,8 +129,6 @@
                         }
                         for (i in json.data)
                         {
-                            console.log(json.data[i].salon);
-                            console.log(class_room);
                             if ((json.data[i].tipo == classroom_type) && (json.data[i].salon == class_room))
                             {
                                 $("#building1").attr("class", "form-group has-error has-feedback");
@@ -196,6 +196,7 @@
 <div class="row">
     <div class="col-lg-12">
         <?= form_open("Class_room/insert/0/2") ?>
+            <?= form_input(array('id' => 'building_hidden', 'type' => 'hidden', 'name' => 'building')) ?>
             <div class="form-group">
                 <select id="headquarters" class="form-control" <?= $current_building == 0 ? 'autofocus="on"': ''?>>
                     <option value="0">Sede</option>
@@ -204,11 +205,13 @@
                     <?php endforeach ?>
                 </select>
             </div>
+
             <div class="form-group">
                 <select id="building" class="form-control" name="building">
                     <option value="">Edificio</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <select id="classroom_type" class="form-control" name="classroom_type" <?= $current_building != 0 ? 'autofocus="on"': ''?>>
                     <option value="0">Tipo de Salon</option>

@@ -78,8 +78,8 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>position</th>
-                        <th>position</th>
+                        <th>nombre</th>
+                        <th>Tipo salon</th>
                     </tr>
                 </thead>
                 <tfoot>
