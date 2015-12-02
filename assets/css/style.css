@@ -1,4 +1,4 @@
-/*----------------------Inicio Responsive del calendario de horarios------------------------*/
+----------------------Inicio Responsive del calendario de horarios------------------------*/
 td
 {
     background: #fff;
@@ -73,6 +73,7 @@ h1
 }
 /*----------------------Fin Responsive del calendario de horarios------------------------*/
 
+/*----------------------inicio de foco en los formularios edificio y salon-----------------*/
 input:focus
 {
     outline-style: none;
@@ -82,3 +83,11 @@ select:focus
 {
     box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset, rgb(123, 169, 208) 0px 0px 6px 0px;
 }
+/*----------------------fin de foco en los formularios edificio y salon-----------------*/
+
+/*-----------inicio quita el padding derecho al select tipo de salon en el formulario insertar salon------------*/
+#box_classroom_type
+{
+    padding-right: 0px;
+}
+/*-----------fin quita el padding derecho al select tipo de salon en el formulario insertar salon------------

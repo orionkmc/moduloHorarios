@@ -212,13 +212,18 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <select id="classroom_type" class="form-control" name="classroom_type" <?= $current_building != 0 ? 'autofocus="on"': ''?>>
-                    <option value="0">Tipo de Salon</option>
-                    <?php foreach ($classroomType as $key): ?>
-                        <option value="<?= $key->id ?>"><?= $key->name ?></option>
-                    <?php endforeach ?>
-                </select>
+            <div class="form-group row">
+                <div id="box_classroom_type" class="col-md-11">
+                    <select id="classroom_type" class="form-control" name="classroom_type" <?= $current_building != 0 ? 'autofocus="on"': ''?>>
+                        <option value="0">Tipo de Salon</option>
+                        <?php foreach ($classroomType as $key): ?>
+                            <option value="<?= $key->id ?>"><?= $key->name ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-default btn-block"><i class="fa fa-plus"></i></button>
+                </div>
             </div>
             
             <div id="building1" class="form-group has-feedback">
