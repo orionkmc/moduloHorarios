@@ -8,7 +8,7 @@ class Schedule extends CI_Controller
         if ($path == 1) 
         {
             $data['begin'] = 1;
-            $data['end'] = 7;
+            $data['end'] = 8;
             $data['blockBegin'] = 1;
             $data['blockEnd'] = 19;
     		$this->load->view('base/head');
