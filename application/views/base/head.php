@@ -73,11 +73,3 @@ require_once"../script/verifSesion.php";
 						</ul>
 					</li>
 				</ul>
-
-
-				<style>
-					.dropdown-menu
-					{
-						width: 100%;
-					}
-				</style>
