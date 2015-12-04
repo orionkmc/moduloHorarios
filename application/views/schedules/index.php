@@ -12,11 +12,11 @@
         '<thead>'+
         '<tr>'+
             '<th class="medio active" colspan="8">MAÑANA</th>'+
-        '</tr>';
-        '<tr class="active">';
-    for (var j = begin; j < end; j++) 
+        '</tr>'+
+        '<tr class="active">'+
+            '<th>HOR<span>A</span></th>';
+    for (var j = begin; j <= end; j++) 
     {
-        if (j==0) { calendar +='<th>HOR<span>A</span></th>'; };
         if (j==1) { calendar +='<th>Lun<span>es</span></th>'; };
         if (j==2) { calendar +='<th>Mar<span>tes</span></th>'; };
         if (j==3) { calendar +='<th>Mi&eacute;<span>rcoles</span></th>'; };
@@ -29,7 +29,7 @@
         '</tr>'+
         '</thead>'+
         '<tbody>';
-    for (var i = blockBegin; i < blockEnd; i++) 
+    for (var i = blockBegin; i <= blockEnd; i++)
     {
         if (i==7)
         {
@@ -46,7 +46,7 @@
         calendar +=
             '<tr>'+
             '<td class="hora">7:00 a 7:45</td>';
-        for (var j = begin; j < end - 1; j++) 
+        for (var j = begin; j <= end; j++) 
         {
             calendar +='<td>'+ c +'</td>';
             c++
