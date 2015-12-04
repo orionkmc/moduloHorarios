@@ -1,6 +1,19 @@
 <script>
+    function sumaHoras(inicial, suma) 
+    {
+        inicial = inicial.split(":");
+        var hora = inicial[0], minutos = inicial[1];
+        minutos = parseInt(minutos) + suma;
+        if(minutos >= 60) 
+        {
+            hora = parseInt(hora) + parseInt(minutos / 60);
+            minutos = minutos - parseInt(minutos / 60) * 60;
+        }
+        return (hora > 12 ? hora - 12 : hora) + ":" + (minutos < 10 ? "0" + minutos : minutos);
+    }
+
     $(document).ready(function()
-{
+    {
     var c = 1;
     var begin = <?= $begin ?>;
     var end = <?= $end ?>;
@@ -29,26 +42,51 @@
         '</tr>'+
         '</thead>'+
         '<tbody>';
+        var hora = '7:00'
     for (var i = blockBegin; i <= blockEnd; i++)
     {
-        if (i==7)
+        if (i==9)
         {
             calendar +='<tr>'+
                 '<th class="medio active" colspan="8">TARDE</th>'+
             '</tr>';
         };
-        if (i==12)
+
+        if (i==15)
         {
             calendar +='<tr>'+
-            '<th class="medio active" colspan="8">NOCHE</th>'+
-        '</tr>';
+                '<th class="medio active" colspan="8">NOCHE</th>'+
+            '</tr>';
         };
+
         calendar +=
             '<tr>'+
-            '<td class="hora">7:00 a 7:45</td>';
+            '<td class="hora"> '+ hora +' a '+ sumaHoras(hora, 45*1) +'</td>';
+
+            (i==1) ? hora = '7:45' : '';
+            (i==2) ? hora = '08:40' : '';
+            (i==3) ? hora = '09:25' : '';
+            (i==4) ? hora = '10:20' : '';
+            (i==5) ? hora = '11:05' : '';
+            (i==6) ? hora = '11:50' : '';
+            (i==7) ? hora = '12:45' : '';
+            (i==8) ? hora = '01:30' : '';
+            (i==9) ? hora = '02:25' : '';
+            (i==10) ? hora = '03:10' : '';
+            (i==11) ? hora = '04:05' : '';
+            (i==12) ? hora = '04:50' : '';
+            (i==13) ? hora = '05:45' : '';
+            (i==14) ? hora = '06:30' : '';
+            (i==15) ? hora = '07:15' : '';
+            (i==16) ? hora = '08:00' : '';
+            (i==17) ? hora = '08:45' : '';
+            (i==18) ? hora = '09:30' : '';
+
+            /*(i<18) ? ((i%2)== 1) ? hora = sumaHoras(hora, 45*1) : hora = sumaHoras(hora, 55*1) : hora = sumaHoras(hora, 45*1);*/
+
         for (var j = begin; j <= end; j++) 
         {
-            calendar +='<td>'+ c +'</td>';
+            calendar +='<td>'+ i +'</td>';
             c++
         }
         calendar +='</tr>';
@@ -97,57 +135,21 @@
             <label for="">Desde</label>
             <select name="blockBegin" class="form-control">
                 <option value="0"></option>
-                <option value="1">bloque 1</option>
-                <option value="2">bloque 2</option>
-                <option value="3">bloque 3</option>
-                <option value="4">bloque 4</option>
-                <option value="5">bloque 5</option>
-                <option value="6">bloque 6</option>
-                <option value="7">bloque 7</option>
-                <option value="8">bloque 8</option>
-                <option value="9">bloque 9</option>
-                <option value="10">bloque 10</option>
-                <option value="11">bloque 11</option>
-                <option value="12">bloque 12</option>
-                <option value="13">bloque 13</option>
-                <option value="14">bloque 14</option>
-                <option value="15">bloque 15</option>
-                <option value="16">bloque 16</option>
-                <option value="17">bloque 17</option>
-                <option value="18">bloque 18</option>
-                <option value="19">bloque 19</option>
+                <?php for ($i=1; $i<=19; $i++ ) : ?>
+                    <option value="<?= $i ?>">bloque <?= $i ?></option>
+                <?php endfor ?>
             </select>
         </div>
         <div class="form-group">
             <label for="">Desde</label>
             <select name="blockEnd" class="form-control">
                 <option value="0"></option>
-                <option value="1">bloque 1</option>
-                <option value="2">bloque 2</option>
-                <option value="3">bloque 3</option>
-                <option value="4">bloque 4</option>
-                <option value="5">bloque 5</option>
-                <option value="6">bloque 6</option>
-                <option value="7">bloque 7</option>
-                <option value="8">bloque 8</option>
-                <option value="9">bloque 9</option>
-                <option value="10">bloque 10</option>
-                <option value="11">bloque 11</option>
-                <option value="12">bloque 12</option>
-                <option value="13">bloque 13</option>
-                <option value="14">bloque 14</option>
-                <option value="15">bloque 15</option>
-                <option value="16">bloque 16</option>
-                <option value="17">bloque 17</option>
-                <option value="18">bloque 18</option>
-                <option value="19">bloque 19</option>
+                <?php for ($i=1; $i<=19; $i++ ) : ?>
+                    <option value="<?= $i ?>">bloque <?= $i ?></option>
+                <?php endfor ?>
             </select>
         </div>
-        <style>
-        .kuai{
-            margin: auto;
-        }
-        </style>
-        <input class="btn btn-primary kuai" type="submit" value="enviar">
+        
+        <input class="btn btn-primary" type="submit" value="enviar">
     </form>
 </div>
