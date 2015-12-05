@@ -14,12 +14,11 @@
 
     $(document).ready(function()
     {
-    var c = 1;
     var begin = <?= $begin ?>;
     var end = <?= $end ?>;
     var blockBegin = <?= $blockBegin ?>;
     var blockEnd = <?= $blockEnd ?>;
-
+    var schedule = <?= json_encode($schedule) ?>;
     var calendar = 
         '<table class="table table-bordered">'+
         '<thead>'+
@@ -42,7 +41,7 @@
         '</tr>'+
         '</thead>'+
         '<tbody>';
-        var hora = '7:00'
+        var hora = '7:00';
     for (var i = blockBegin; i <= blockEnd; i++)
     {
         if (i==9)
@@ -84,10 +83,19 @@
 
             /*(i<18) ? ((i%2)== 1) ? hora = sumaHoras(hora, 45*1) : hora = sumaHoras(hora, 55*1) : hora = sumaHoras(hora, 45*1);*/
 
+            
         for (var j = begin; j <= end; j++) 
         {
-            calendar +='<td>'+ i +'</td>';
-            c++
+            calendar +='<td>';
+                for(k in schedule)
+                {
+                    if(schedule[k].fila == i && schedule[k].columna == j){
+                        calendar += schedule[k].status;
+                        break;
+                    }
+                }
+
+            calendar +='</td>';
         }
         calendar +='</tr>';
     };
@@ -100,7 +108,6 @@
 <div id="calendar"></div>
 <input id="mostrar-modal" name="modal" type="radio"/> 
 <label for="mostrar-modal" class="btn btn-primary"> Configurar Horario </label>
-
 <div id="modal">
     <input id="cerrar-modal" name="modal" type="radio" /> 
     <label for="cerrar-modal"> X </label> 
