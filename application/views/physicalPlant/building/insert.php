@@ -73,7 +73,6 @@
 
 <div class="row">
     <div class="col-lg-12">
-        
         <?= form_open("Building/insert/2") ?>
             <div class="form-group">
                 <select id="headquarters" class="form-control" name="headquarters" required="required" autofocus="on">
@@ -82,7 +81,6 @@
                         <option value="<?= $key->id ?>"><?= $key->nombre ?></option>
                     <?php endforeach ?>
                 </select>
-                <br>
                 <?php if (form_error('headquarters')): ?>
                     <div class="alert alert-danger alert-dismissible fade in" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

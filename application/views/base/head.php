@@ -4,6 +4,7 @@ require_once"../script/verifSesion.php";
 <!DOCTYPE html>
 <html lang="es">
 <head>
+	<title>Horarios</title>
 	<!-- Plantilla -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,18 +28,31 @@ require_once"../script/verifSesion.php";
 
 <!-- Inicio css Modulos Horarios -->
 	<link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet" type="text/css" />
-	<script src="<?= base_url('assets/js/script.js') ?>"></script>
+	<script src="<?= base_url('assets/js/loadData.js') ?>"></script>
+
+	<?php if (isset($class_room) == 'class_room'): ?>
+		<script src="<?= base_url('assets/js/loadClass_roomDatatables.js') ?>"></script>
+	<?php endif ?>
+		
+	<?php if (isset($building) == 'building'): ?>
+		<script src="<?= base_url('assets/js/loadBuildingDatatables.js') ?>"></script>
+	<?php endif ?>
+
+	<?php if (isset($schedule) == 'schedule'): ?>
+		<script src="<?= base_url('assets/js/calendar.js') ?>"></script>
+		<script src="<?= base_url('assets/js/schedule.js') ?>"></script>
+	<?php endif ?>
+
 <!-- Fin css Modulos Horarios -->
 </head>
 <body>
+	<?php if (isset($schedule) == 'schedule'): ?>
+    	<div id="box_schedule">
+    <?php endif ?>
 	<div id="wrapper">
 		<!-- Contenido -->
 		<div id="page-wrapper" style="margin: 0px; border-left: none;">
-			<div>
 				<!--inicio de pestañas-->
-				<div class="col-lg-12">
-					<h1 class="page-header">Horarios</h1><br>
-				</div>
 
 				<ul class="nav nav-tabs nav-justified nav-pills">
 					<li>

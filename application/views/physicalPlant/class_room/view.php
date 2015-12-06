@@ -1,6 +1,7 @@
 <script>
    $(document).ready(function()
     {
+        var site_url = '<?= site_url() ?>';
         var headquarters = $("#headquarters").val()
         $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
         {
@@ -11,44 +12,22 @@
                 html += '<option value="' + json[post].id + '"' + ((json[post].id == <?= isset($current_building[0]->id) ? $current_building[0]->id : 0 ?>) ? ' selected="selected" ' : '') + '>' + json[post].edificio + '</option>';
             }
             $("#building").html(html);
-            load_building();
+            var building = $("#building").val();
+            $("#more").attr("href", "<?= site_url(); ?>/Class_room/insert/"+ building);
+            loadClass_roomDatatables(site_url, building);
         });
 
         $("#headquarters").change(function(){
-            var headquarters = $("#headquarters").val()
-            $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
-            {
-                var json = JSON.parse(data);
-                var html = '<option value="0">Edificio</option>';
-                for(post in json)
-                {
-                    html+=
-                    '<option value="'+ json[post].id + '" >'+
-                    json[post].edificio +
-                    '</option>';
-                }
-                $("#building").html(html);
-            });
+            var headquarters = $("#headquarters").val();
+            loadBuilding(site_url, headquarters);
         });
 
         $("#building").on("change",function(){
-           load_building();
+            var building = $("#building").val();
+            $("#more").attr("href", "<?= site_url(); ?>/Class_room/insert/"+ building);
+           loadClass_roomDatatables(site_url, building);
         });
     });
-    function load_building()
-    {
-        var building = $("#building").val();
-        $("#more").attr("href", "<?= site_url(); ?>/Class_room/insert/"+ building);
-            $('#example').DataTable({
-                "destroy": true,
-                "ajax": '<?= base_url(); ?>index.php/Class_room/class_room/'+ building,
-                "columns": [
-                    { "data": "id" },
-                    { "data": "salon" },
-                    { "data": "tipo" }
-                ]
-            });
-    }
 </script>
 
 <div class="row">

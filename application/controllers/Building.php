@@ -13,10 +13,12 @@ class Building extends CI_Controller
     {
         $data['headquarters'] = $this->Headquarters_model->get_all();
         $data['current_headquarters'] = $current_headquarters;
-        $this->load->view('base/head');
+        $_data['building'] = 'building';
+        $this->load->view('base/head',$_data);
         $this->load->view('physicalPlant/building/view', $data);
         $this->load->view('base/foot');
     }
+
     public function insert($path=1)
     {
         $this->load->library('form_validation');

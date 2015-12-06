@@ -1,27 +1,16 @@
 <script>
     $(document).ready(function()
     {
-        loadData();
-        $("#headquarters").on("ready change",function(){
-            loadData();
-        });
-    })
+        var site_url = '<?= site_url() ?>';
 
-    //inicio carga los edificios x ajax
-    function loadData()
-    {
-        var headquarters = $("#headquarters").val()
-        $('#example').DataTable({
-            "destroy": true,
-            "ajax": '<?php echo base_url(); ?>index.php/Building/building/'+ headquarters,
-            "columns": [
-                { "data": "id" },
-                { "data": "edificio" },
-                { "data": "variable" }
-            ]
+        var headquarters = $("#headquarters").val();
+        loadBuildingDatatables(site_url, headquarters);
+
+        $("#headquarters").on("ready change",function(){
+            var headquarters = $("#headquarters").val()
+            loadBuildingDatatables(site_url, headquarters);
         });
-    }
-//fin carga los edificios x ajax
+    });
 </script>
 
 

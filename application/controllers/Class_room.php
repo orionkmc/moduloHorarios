@@ -15,7 +15,9 @@ class Class_room extends CI_Controller
     {
         $data['headquarters']     = $this->Headquarters_model->get_all();
         $data['current_building'] = $this->Building_model->get_by_id($current_building);
-        $this->load->view('base/head', $data);
+
+        $_data['class_room'] = 'class_room';
+        $this->load->view('base/head',$_data);
         $this->load->view('physicalPlant/class_room/view', $data);
         $this->load->view('base/foot');
     }

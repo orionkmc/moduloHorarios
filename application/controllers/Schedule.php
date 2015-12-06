@@ -7,6 +7,7 @@ class Schedule extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Schedule_model');
+        $this->load->model('Headquarters_model');
     }
 
 	public function index($path = 1)
@@ -25,8 +26,10 @@ class Schedule extends CI_Controller
             $data['blockBegin'] = $this->input->post('blockBegin');
             $data['blockEnd'] = $this->input->post('blockEnd');
         }
-        $this->load->view('base/head');
+        $_data['schedule'] = 'schedule';
+        $this->load->view('base/head', $_data);
         $data['schedule'] = $this->Schedule_model->get_all();
+        $data['headquarters'] = $this->Headquarters_model->get_all();
         $this->load->view('schedules/index', $data);
         $this->load->view('base/foot');
 	}
