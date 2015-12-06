@@ -60,15 +60,17 @@ class Class_room extends CI_Controller
         }
     }
 
-    public function building($_id)
+    /*movi la funcion building para el controlador building ARREGLAR*/
+
+    public function class_room($building, $path = 1)
     {
-        $post = $this->Building_model->get($_id);
-        echo json_encode($post);
+        $post = $this->Class_room_model->get($building, $path);
+        echo '{"data":',  json_encode($post),'}';
     }
 
-    public function class_room($_id)
+    public function class_room_forBC($building, $classroom_type)
     {
-        $post = $this->Class_room_model->get($_id);
+        $post = $this->Class_room_model->class_room_forBC($building, $classroom_type);
         echo '{"data":',  json_encode($post),'}';
     }
 }

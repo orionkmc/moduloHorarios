@@ -63,6 +63,12 @@ class Building extends CI_Controller
         echo '{"data":',  json_encode($datatables),'}';
     }
 
+    public function data_building($_id)
+    {
+        $post = $this->Building_model->get($_id);
+        echo json_encode($post);
+    }
+
     public function delete($id)
     {
         $this->Building_model->delete($id);

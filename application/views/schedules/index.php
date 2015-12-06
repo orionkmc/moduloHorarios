@@ -1,15 +1,15 @@
 <script>
     $(document).ready(function()
     {
+        var site_url = '<?= site_url() ?>';
+        schedule_function(site_url);
+        
         var begin = <?= $begin ?>;
         var end = <?= $end ?>;
         var blockBegin = <?= $blockBegin ?>;
         var blockEnd = <?= $blockEnd ?>;
         var schedule = <?= json_encode($schedule) ?>;
         calendar(begin, end, blockBegin, blockEnd, schedule);
-
-        schedule_function();
-
 
         $("#mostrar-modal").on("click", function(){
             if($("#mostrar-modal").attr('value') == 'mostrar')
@@ -47,6 +47,7 @@
         <label for="cerrar-modal" class="cerrar" title="Cerrar"><i class="fa fa-times"></i></label>
         <div class="col-lg-12">
             <?= form_open("Building/insert/2") ?>
+                <label for="">Filtrar Salon</label>
                 <div class="form-group">
                     <select id="headquarters" class="form-control" name="headquarters" required="required" autofocus="on">
                         <option value="0">Sede</option>
@@ -55,7 +56,6 @@
                         <?php endforeach ?>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <select id="building" class="form-control" name="building" required="required" autofocus="on">
                         <option value="0">Edificio</option>
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="form-group">
-                    <select id="classroom" class="form-control" name="classroom" required="required" autofocus="on">
+                    <select id="class_room" class="form-control" name="class_room" required="required" autofocus="on">
                         <option value="0">Salon</option>
                     </select>
                 </div>
@@ -80,9 +80,9 @@
         
         <form id="form_schedule" action="<?= site_url('Schedule/index/2') ?>" method="post">
             <div class="form-group">
-                <label for="">Desde</label>
+                <label for="">Dias</label>
                 <select name="begin" class="form-control">
-                    <option value="0"></option>
+                    <option value="0">Desde</option>
                     <option value="1">Lunes</option>
                     <option value="2">Martes</option>
                     <option value="3">Miercoles</option>
@@ -93,9 +93,8 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="">Hasta</label>
                 <select name="end" class="form-control">
-                    <option value="0"></option>
+                    <option value="0">Hasta</option>
                     <option value="1">Lunes</option>
                     <option value="2">Martes</option>
                     <option value="3">Miercoles</option>
@@ -106,18 +105,17 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="">Desde</label>
+                <label for="">Horas</label>
                 <select name="blockBegin" class="form-control">
-                    <option value="0"></option>
+                    <option value="0">Desde</option>
                     <?php for ($i=1; $i<=19; $i++ ) : ?>
                         <option value="<?= $i ?>">bloque <?= $i ?></option>
                     <?php endfor ?>
                 </select>
             </div>
             <div class="form-group">
-                <label for="">Hasta</label>
                 <select name="blockEnd" class="form-control">
-                    <option value="0"></option>
+                    <option value="0">Hasta</option>
                     <?php for ($i=1; $i<=19; $i++ ) : ?>
                         <option value="<?= $i ?>">bloque <?= $i ?></option>
                     <?php endfor ?>
