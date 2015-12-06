@@ -25,7 +25,7 @@
         $("#cerrar-modal").on("click", function(){
             if($("#cerrar-modal").attr('value') == 'cerrar')
             {
-                $("#modal").css('left', '-40vh');
+                $("#modal").css('left', '-40%');
                 $("#box_schedule").css('width', '100%');
                 $("#box_schedule").css('transition', 'all 1s');
                 $("#label-mostrar-modal").css('transition', 'all 1s');
@@ -43,11 +43,11 @@
 
 
     <div id="modal">
+        <div class="col-lg-12">
         <input id="cerrar-modal" name="modal" type="radio" value="cerrar" /> 
         <label for="cerrar-modal" class="cerrar" title="Cerrar"><i class="fa fa-times"></i></label>
-        <div class="col-lg-12">
             <?= form_open("Building/insert/2") ?>
-                <label for="">Filtrar Salon</label>
+                <h3 class="page-header">Filtrar Salon</h3>
                 <div class="form-group">
                     <select id="headquarters" class="form-control" name="headquarters" required="required" autofocus="on">
                         <option value="0">Sede</option>
@@ -79,6 +79,7 @@
         </div>
         
         <form id="form_schedule" action="<?= site_url('Schedule/index/2') ?>" method="post">
+        <h3 class="page-header">Cambiar dias y horas</h3>
             <div class="form-group">
                 <label for="">Dias</label>
                 <select name="begin" class="form-control">
@@ -124,5 +125,3 @@
             <input class="btn btn-primary" type="submit" value="enviar">
         </form>
     </div>
-
-
