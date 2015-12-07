@@ -124,7 +124,7 @@ El siguiente codigo hace q el submenu sea del mismo ancho q el li padre*/
     position: fixed;
     top: 0;
     color: #fff;
-    left: -40%;
+    left: -20%;
     height: 100%;
     width: 20%;
     transition: all 1s;
