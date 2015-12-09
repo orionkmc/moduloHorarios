@@ -24,12 +24,11 @@
             $("#building1").attr("class", "form-group has-feedback");
             $("#building3").attr("class", "glyphicon glyphicon-pencil form-control-feedback");
 
-            $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
+            $.get("<?php echo site_url('Building/Building/"+ headquarters +"') ?>", "", function(data)
             {
                 json = JSON.parse(data);
                 $("#building").keyup(function(){
                     var building = $("#building").val();
-
                     if(building == '')
                     {
                         $("#building1").attr("class", "form-group has-feedback");
@@ -37,15 +36,16 @@
                         $("#submit").attr("disabled","disabled");
                     };
 
-                    if((json.length === 0)&&(building != ''))
+                    if((json.data.length === 0)&&(building != ''))
                     {
                         $("#building1").attr("class", "form-group has-success has-feedback");
                         $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
                         $("#submit").removeAttr("disabled");
                     }
-                    for (i in json)
+
+                    for (i in json.data)
                     {
-                        if (json[i].edificio == building)
+                        if (json.data[i].name == building)
                         {
                             $("#building1").attr("class", "form-group has-error has-feedback");
                             $("#building3").attr("class", "glyphicon glyphicon-remove form-control-feedback");
@@ -53,7 +53,7 @@
                             return false;
                         };
 
-                        if ((json[i].edificio != building) && (building != ''))
+                        if ((json.data[i].name != building) && (building != ''))
                         {
                             $("#building1").attr("class", "form-group has-success has-feedback");
                             $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");

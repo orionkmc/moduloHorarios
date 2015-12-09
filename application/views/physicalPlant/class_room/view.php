@@ -3,13 +3,13 @@
     {
         var site_url = '<?= site_url() ?>';
         var headquarters = $("#headquarters").val()
-        $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
+        $.get("<?php echo site_url('Building/Building/"+ headquarters +"') ?>", "", function(data)
         {
             var json = JSON.parse(data);
             var html = '<option value="0">Edificio</option>';
-            for(post in json)
+            for(post in json.data)
             {   
-                html += '<option value="' + json[post].id + '"' + ((json[post].id == <?= isset($current_building[0]->id) ? $current_building[0]->id : 0 ?>) ? ' selected="selected" ' : '') + '>' + json[post].edificio + '</option>';
+                html += '<option value="' + json.data[post].id + '"' + ((json.data[post].id == <?= isset($current_building[0]->id) ? $current_building[0]->id : 0 ?>) ? ' selected="selected" ' : '') + '>' + json.data[post].name + '</option>';
             }
             $("#building").html(html);
             var building = $("#building").val();
@@ -40,7 +40,7 @@
     <select id="headquarters" class="form-control" autofocus="on">
         <option value="0">Sede</option>
         <?php foreach ($headquarters as $key): ?>
-            <option value="<?= $key->id ?>" <?= (($current_building !=0) && ($key->id == $current_building[0]->id_sede))  ? "selected" : "" ?> ><?= $key->nombre ?></option>
+            <option value="<?= $key->id ?>" <?= (($current_building !=0) && ($key->id == $current_building[0]->headquarters))  ? "selected" : "" ?> ><?= $key->nombre ?></option>
         <?php endforeach ?>
     </select>
 </div>

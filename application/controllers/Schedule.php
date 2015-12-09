@@ -32,5 +32,12 @@ class Schedule extends CI_Controller
         $data['headquarters'] = $this->Headquarters_model->get_all();
         $this->load->view('schedules/index', $data);
         $this->load->view('base/foot');
+        /*$c = 1;
+        for ($i=1; $i <= 19  ; $i++) { 
+            for ($j=1; $j <= 7; $j++) { 
+                echo "INSERT INTO horario_prueba VALUES ('$c','$c','$i','$j');</br>";
+                $c++;
+            }
+        }*/
 	}
 }

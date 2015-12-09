@@ -10,12 +10,12 @@ class Building_model extends CI_Model
 
     function get($_id)
     {
-        return $this->db->where('id_sede',$_id)->get('edificio')->result();
+        return $this->db->where('headquarters',$_id)->get('building')->result();
     }
 
     function exists_in_db($row) 
     {
-        $query = $this->db->where('id_sede', $row['id_sede'])->where('edificio', $row['edificio'])->get('edificio');
+        $query = $this->db->where('headquarters', $row['headquarters'])->where('name', $row['name'])->get('building');
         $this->db->last_query();
         return ($query->num_rows() > 0);
     }
@@ -23,8 +23,8 @@ class Building_model extends CI_Model
     function insert($_data)
     {
         $data = array(
-            'id_sede' => $_data->post('headquarters'),
-            'edificio' => $_data->post('building')
+            'headquarters' => $_data->post('headquarters'),
+            'name' => $_data->post('building')
         );
 
         if ($this->exists_in_db($data))
@@ -32,7 +32,7 @@ class Building_model extends CI_Model
             return false;
         }
 
-        if ($this->db->insert('edificio', $data))
+        if ($this->db->insert('building', $data))
         {
             return true;
         } 
@@ -48,7 +48,7 @@ class Building_model extends CI_Model
             return FALSE;
         }
         
-        if ($this->db->where('id', $id)->delete('edificio')) 
+        if ($this->db->where('id', $id)->delete('building')) 
         {
             return TRUE;
         } 
@@ -60,7 +60,7 @@ class Building_model extends CI_Model
 
     function get_by_id($id) 
     {
-        $query = $this->db->where('id', $id)->get('edificio');
+        $query = $this->db->where('id', $id)->get('building');
         if ($query->num_rows() == 0) 
         {
             return 0;
@@ -71,11 +71,11 @@ class Building_model extends CI_Model
     function update($_data) 
     {
         $data = array(
-            'edificio' => $_data->post('building'),
+            'name' => $_data->post('building'),
             'id' => $_data->post('id')
         );
 
-        if ($this->db->where('id', $_data->post('id'))->update('edificio', $data)) 
+        if ($this->db->where('id', $_data->post('id'))->update('building', $data)) 
         {
             return TRUE;
         }

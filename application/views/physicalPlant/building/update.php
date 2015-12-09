@@ -5,7 +5,7 @@
         $("#building1").attr("class", "form-group has-success has-feedback");
         $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
 
-        $.get("<?php echo site_url('Class_room/Building/"+ headquarters +"') ?>", "", function(data)
+        $.get("<?php echo site_url('Building/Building/"+ headquarters +"') ?>", "", function(data)
         {
             json = JSON.parse(data);
             $("#building").keyup(function(){
@@ -18,15 +18,15 @@
                     $("#submit").attr("disabled","disabled");
                 };
 
-                if((json.length === 0)&&(building != ''))
+                if((json.data.length === 0)&&(building != ''))
                 {
                     $("#building1").attr("class", "form-group has-success has-feedback");
                     $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
                     $("#submit").removeAttr("disabled");
                 }
-                for (i in json)
+                for (i in json.data)
                 {
-                    if ((json[i].edificio == building) && (building != '<?= $update_Headquarters[0]->edificio ?>'))
+                    if ((json.data[i].name == building) && (building != '<?= $update_Headquarters[0]->name ?>'))
                     {
                         $("#building1").attr("class", "form-group has-error has-feedback");
                         $("#building3").attr("class", "glyphicon glyphicon-remove form-control-feedback");
@@ -34,14 +34,14 @@
                         return false;
                     };
 
-                    if ((json[i].edificio != building) && (building != ''))
+                    if ((json.data[i].name != building) && (building != ''))
                     {
                         $("#building1").attr("class", "form-group has-success has-feedback");
                         $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
                         $("#submit").removeAttr("disabled");
                     };
 
-                    if ((building == '<?= $update_Headquarters[0]->edificio ?>')) 
+                    if ((building == '<?= $update_Headquarters[0]->name ?>')) 
                     {
                         $("#building1").attr("class", "form-group has-success has-feedback");
                         $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
@@ -68,13 +68,13 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <?php $hidden = array('headquarters' => $update_Headquarters[0]->id_sede, 'id' => $update_Headquarters[0]->id) ?>
+        <?php $hidden = array('headquarters' => $update_Headquarters[0]->headquarters, 'id' => $update_Headquarters[0]->id) ?>
         <?= form_open("Building/update/". $update_Headquarters[0]->id ."/2","",$hidden) ?>
             <div class="form-group">
                 <select id="headquarters" class="form-control" name="headquarters">
                     <option value="0">Sede</option>
                     <?php foreach ($headquarters as $key): ?>
-                        <option value="<?= $key->id ?>" <?= ($key->id == $update_Headquarters[0]->id_sede) ?'selected' :'' ?>><?= $key->nombre ?></option>
+                        <option value="<?= $key->id ?>" <?= ($key->id == $update_Headquarters[0]->headquarters) ?'selected' :'' ?>><?= $key->nombre ?></option>
                     <?php endforeach ?>
                 </select>
                 <br>
@@ -90,7 +90,7 @@
             </div>
 
             <div id="building1" class="form-group has-feedback">
-                <?= form_input(array('name'=> 'building', 'id' => 'building', 'value' => $update_Headquarters[0]->edificio, 'class' => 'form-control','placeholder'=>'Nombre del Edificio', 'autofocus'=>'on')) ?>
+                <?= form_input(array('name'=> 'building', 'id' => 'building', 'value' => $update_Headquarters[0]->name, 'class' => 'form-control','placeholder'=>'Nombre del Edificio', 'autofocus'=>'on')) ?>
                 <span id="building3" class="glyphicon glyphicon-pencil form-control-feedback" aria-hidden="true"></span>
                 <p class="help-block">Debe colocar el nombre o vocal del edificio, Sin anteponer la palabra edificio. Ej: A</p>
                 <?php if (form_error('building')): ?>

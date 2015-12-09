@@ -12,6 +12,6 @@ class Schedule_model extends CI_Model
 
     function get_all() 
     {
-        return $this->db->get('horario_prueba')->result();
+        return $this->db->get('schedule')->result();
     }
 }

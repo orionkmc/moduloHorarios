@@ -84,7 +84,7 @@ function calendar(begin, end, blockBegin, blockEnd, schedule)
             calendar +='<td>';
                 for(k in schedule)
                 {
-                    if(schedule[k].fila == i && schedule[k].columna == j){
+                    if(schedule[k].rows == i && schedule[k].columns == j){
                         calendar += schedule[k].status;
                         break;
                     }

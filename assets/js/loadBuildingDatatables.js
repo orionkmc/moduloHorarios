@@ -6,7 +6,7 @@ function loadBuildingDatatables(site_url, headquarters)
             "ajax": site_url + '/Building/building/'+ headquarters,
             "columns": [
                 { "data": "id" },
-                { "data": "edificio" },
+                { "data": "name" },
                 { "data": "variable" }
             ]
         });

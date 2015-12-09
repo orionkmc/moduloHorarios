@@ -15,7 +15,6 @@ class Class_room extends CI_Controller
     {
         $data['headquarters']     = $this->Headquarters_model->get_all();
         $data['current_building'] = $this->Building_model->get_by_id($current_building);
-
         $_data['class_room'] = 'class_room';
         $this->load->view('base/head',$_data);
         $this->load->view('physicalPlant/class_room/view', $data);
@@ -34,7 +33,7 @@ class Class_room extends CI_Controller
             $this->load->view('physicalPlant/class_room/insert', $data);
             $this->load->view('base/foot');
         }
-        elseif ($path == 2) 
+        elseif ($path == 2)
         {
             /*$this->form_validation->set_message("greater_than[0]", "No has seleccionado ninguna %s.");
             $this->form_validation->set_message("required", "El campo %s es requerido.");
