@@ -28,10 +28,11 @@ class Schedule extends CI_Controller
         }
         $_data['schedule'] = 'schedule';
         $this->load->view('base/head', $_data);
-        $data['schedule'] = $this->Schedule_model->get_all();
+        $data['schedule'] = $this->Schedule_model->get(1);
         $data['headquarters'] = $this->Headquarters_model->get_all();
         $this->load->view('schedules/index', $data);
         $this->load->view('base/foot');
+
         /*$c = 134;
         $k = 1;
         for ($i=1; $i <= 19  ; $i++) { 

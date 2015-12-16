@@ -2,8 +2,16 @@
     $(document).ready(function()
     {
         var site_url = '<?= site_url() ?>';
-        modal_left();
         schedule_function(site_url);
+
+        modal_left();
+
+        var begin = <?= $begin ?>;
+        var end = <?= $end ?>;
+        var blockBegin = <?= $blockBegin ?>;
+        var blockEnd = <?= $blockEnd ?>;
+        var schedule = <?= '{"data":',  json_encode($schedule),'}' ?>;
+        calendar(begin, end, blockBegin, blockEnd, schedule);
 
         $('#class_room').on("change", function(){
             var headquarters = $("#headquarters option:selected").text();
@@ -15,10 +23,6 @@
             $.get("<?php echo site_url('Schedule/data_schedule/"+ class_room +"') ?>", "", function(data)
             {
                 var schedule = JSON.parse(data);
-                var begin = <?= $begin ?>;
-                var end = <?= $end ?>;
-                var blockBegin = <?= $blockBegin ?>;
-                var blockEnd = <?= $blockEnd ?>;
                 calendar(begin, end, blockBegin, blockEnd, schedule);
             });
         });
@@ -26,7 +30,7 @@
 </script>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="title page-header"></h1>
+            <h1 class="title page-header">sede: Bailadores, Edificio: B, Salon: 1</h1>
         </div>
     </div>
     <div id="calendar"></div>
