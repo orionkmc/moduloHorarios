@@ -14,4 +14,9 @@ class Schedule_model extends CI_Model
     {
         return $this->db->get('schedule')->result();
     }
+
+    function get($id)
+    {
+        return $this->db->where('classrooms',$id)->get('schedule')->result();
+    }
 }

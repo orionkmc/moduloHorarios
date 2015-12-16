@@ -1,26 +1,32 @@
 <script>
     $(document).ready(function()
     {
-        modal_left();
-        
         var site_url = '<?= site_url() ?>';
-        var kuai = schedule_function(site_url);
-        $('#class_room').on("change", function(){
-            var kuai = $("#class_room").val();
-            console.log(kuai);
+        modal_left();
+        schedule_function(site_url);
 
-            var begin = <?= $begin ?>;
-            var end = <?= $end ?>;
-            var blockBegin = <?= $blockBegin ?>;
-            var blockEnd = <?= $blockEnd ?>;
-            var schedule = <?= json_encode($schedule) ?>;
-            calendar(begin, end, blockBegin, blockEnd, schedule);
+        $('#class_room').on("change", function(){
+            var headquarters = $("#headquarters option:selected").text();
+            var building = $("#building option:selected").text();
+            var class_room = $("#class_room option:selected").text();
+
+            $( ".title" ).html( "sede: " + headquarters + ", Edificio: " + building + ", Salon: " + class_room );
+
+            $.get("<?php echo site_url('Schedule/data_schedule/"+ class_room +"') ?>", "", function(data)
+            {
+                var schedule = JSON.parse(data);
+                var begin = <?= $begin ?>;
+                var end = <?= $end ?>;
+                var blockBegin = <?= $blockBegin ?>;
+                var blockEnd = <?= $blockEnd ?>;
+                calendar(begin, end, blockBegin, blockEnd, schedule);
+            });
         });
     });
 </script>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Sede:Ejido-Edificio:"A"-Salon:1 </h1><br>
+            <h1 class="title page-header"></h1>
         </div>
     </div>
     <div id="calendar"></div>

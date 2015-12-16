@@ -14,6 +14,7 @@ function sumaHoras(inicial, suma)
     
 function calendar(begin, end, blockBegin, blockEnd, schedule)
 {
+    console.log(schedule.data[0].status);
     var calendar = 
         '<table class="table table-bordered">'+
         '<thead>'+
@@ -82,10 +83,10 @@ function calendar(begin, end, blockBegin, blockEnd, schedule)
         for (var j = begin; j <= end; j++) 
         {
             calendar +='<td>';
-                for(k in schedule)
+                for(k in schedule.data)
                 {
-                    if(schedule[k].rows == i && schedule[k].columns == j){
-                        calendar += schedule[k].status;
+                    if(schedule.data[k].rows == i && schedule.data[k].columns == j){
+                        calendar += schedule.data[k].status;
                         break;
                     }
                 }
