@@ -1,36 +1,20 @@
 <script>
     $(document).ready(function()
     {
-        var site_url = '<?= site_url() ?>';
-        schedule_function(site_url);
+        modal_left();
         
-        var begin = <?= $begin ?>;
-        var end = <?= $end ?>;
-        var blockBegin = <?= $blockBegin ?>;
-        var blockEnd = <?= $blockEnd ?>;
-        var schedule = <?= json_encode($schedule) ?>;
-        calendar(begin, end, blockBegin, blockEnd, schedule);
+        var site_url = '<?= site_url() ?>';
+        var kuai = schedule_function(site_url);
+        $('#class_room').on("change", function(){
+            var kuai = $("#class_room").val();
+            console.log(kuai);
 
-        $("#mostrar-modal").on("click", function(){
-            if($("#mostrar-modal").attr('value') == 'mostrar')
-            {
-                $("#modal").css('left', '0');
-                $("#box_schedule").css('width', '80%');
-                $("#box_schedule").css('transition', 'all 1s');
-                $("#label-mostrar-modal").css('transition', 'all 1s');
-                $("#label-mostrar-modal").css('margin-left', '20%');
-
-            }
-        });
-        $("#cerrar-modal").on("click", function(){
-            if($("#cerrar-modal").attr('value') == 'cerrar')
-            {
-                $("#modal").css('left', '-20%');
-                $("#box_schedule").css('width', '100%');
-                $("#box_schedule").css('transition', 'all 1s');
-                $("#label-mostrar-modal").css('transition', 'all 1s');
-                $("#label-mostrar-modal").css('margin-left', '0%');
-            }
+            var begin = <?= $begin ?>;
+            var end = <?= $end ?>;
+            var blockBegin = <?= $blockBegin ?>;
+            var blockEnd = <?= $blockEnd ?>;
+            var schedule = <?= json_encode($schedule) ?>;
+            calendar(begin, end, blockBegin, blockEnd, schedule);
         });
     });
 </script>
@@ -122,6 +106,6 @@
                     <?php endfor ?>
                 </select>
             </div>
-            <input class="btn btn-primary" type="submit" value="enviar">
+            <input id="k" class="btn btn-primary" type="submit" value="enviar">
         </form>
     </div>

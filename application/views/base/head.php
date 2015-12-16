@@ -41,6 +41,7 @@ require_once"../script/verifSesion.php";
 	<?php if (isset($schedule) == 'schedule'): ?>
 		<script src="<?= base_url('assets/js/schedule/calendar.js') ?>"></script>
 		<script src="<?= base_url('assets/js/schedule/schedule.js') ?>"></script>
+		<script src="<?= base_url('assets/js/modal_left.js') ?>"></script>
 	<?php endif ?>
 
 <!-- Fin css Modulos Horarios -->

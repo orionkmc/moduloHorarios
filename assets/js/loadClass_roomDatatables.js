@@ -5,8 +5,8 @@ function loadClass_roomDatatables(site_url, building)
         "ajax": site_url + '/Class_room/class_room/'+ building,
         "columns": [
             { "data": "id" },
-            { "data": "salon" },
-            { "data": "tipo" }
+            { "data": "name" },
+            { "data": "classroom_type" }
         ]
     });
 }

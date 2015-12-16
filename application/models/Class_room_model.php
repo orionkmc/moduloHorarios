@@ -12,25 +12,25 @@ class Class_room_model extends CI_Model
     {
         if ($path==1) 
         {
-            return $this->db->where('cod_edi',$_id)->get('salones')->result();
+            return $this->db->where('building',$_id)->get('classrooms')->result();
             /*print_r($this->db->last_query());*/
         }
         else if ($path==2) 
         {
-            return $this->db->group_by(array('tipo','name' ))->order_by('tipo', 'ASC')->select('classroom_type.name, salones.tipo')->from('salones')->join('classroom_type', 'salones.tipo = classroom_type.id')->where('cod_edi',$_id)->get()->result();
+            return $this->db->group_by(array('classrooms.classroom_type','classroom_type.name'))->order_by('classroom_type', 'ASC')->select('classroom_type.name, classrooms.classroom_type')->from('classrooms')->join('classroom_type', 'classrooms.classroom_type = classroom_type.id')->where('building',$_id)->get()->result();
              /*print_r($this->db->last_query());*/
         }
     }
 
     function class_room_forBC($building, $classroom_type)
     {
-        return $this->db->where('cod_edi',$building)->where('tipo',$classroom_type)->get('salones')->result();
+        return $this->db->where('building',$building)->where('classroom_type',$classroom_type)->get('classrooms')->result();
     }
     
 
     function exists_in_db($row) 
     {
-        $query = $this->db->where('salon', $row['salon'])->where('cod_edi', $row['cod_edi'])->where('tipo', $row['tipo'])->get('salones');
+        $query = $this->db->where('name', $row['name'])->where('building', $row['building'])->where('classroom_type', $row['classroom_type'])->get('classrooms');
         /*$this->db->last_query();*/
         return ($query->num_rows() > 0);
     }
@@ -38,9 +38,9 @@ class Class_room_model extends CI_Model
     function insert($_data)
     {
         $data = array(
-            'salon' => $_data->post('class_room'),
-            'cod_edi' => $_data->post('building'),
-            'tipo' => $_data->post('classroom_type'),
+            'name' => $_data->post('class_room'),
+            'building' => $_data->post('building'),
+            'classroom_type' => $_data->post('classroom_type'),
         );
 
         if ($this->exists_in_db($data))
@@ -48,7 +48,7 @@ class Class_room_model extends CI_Model
             return false;
         }
 
-        if ($this->db->insert('salones', $data))
+        if ($this->db->insert('classrooms', $data))
         {
             return true;
         } 
@@ -59,4 +59,4 @@ class Class_room_model extends CI_Model
     }
 }
 
-/*SELECT b.name ,a.tipo FROM salones a INNER JOIN classroom_type b ON a.tipo = b.id WHERE a.cod_edi = '41' GROUP BY a.tipo, name;*/
+/*SELECT b.name ,a.classroom_type FROM namees a INNER JOIN classroom_type b ON a.classroom_type = b.id WHERE a.building = '41' GROUP BY a.classroom_type, name;*/

@@ -63,21 +63,21 @@
                                 }
                                 for (i in json.data)
                                 {
-                                    if ((json.data[i].tipo == classroom_type) && (json.data[i].salon == class_room))
+                                    if ((json.data[i].classroom_type == classroom_type) && (json.data[i].name == class_room))
                                     {
                                         $("#building1").attr("class", "form-group has-error has-feedback");
                                         $("#building3").attr("class", "glyphicon glyphicon-remove form-control-feedback");
                                         $("#submit").attr("disabled","disabled");
                                     };
 
-                                    if ((json.data[i].tipo != classroom_type) && (json.data[i].salon == class_room))
+                                    if ((json.data[i].classroom_type != classroom_type) && (json.data[i].name == class_room))
                                     {
                                         $("#building1").attr("class", "form-group has-success has-feedback");
                                         $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
                                         $("#submit").removeAttr("disabled");
                                     };
 
-                                    if ((json.data[i].salon != class_room) && (class_room != ''))
+                                    if ((json.data[i].name != class_room) && (class_room != ''))
                                     {
                                         $("#building1").attr("class", "form-group has-success has-feedback");
                                         $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
@@ -130,21 +130,21 @@
                         }
                         for (i in json.data)
                         {
-                            if ((json.data[i].tipo == classroom_type) && (json.data[i].salon == class_room))
+                            if ((json.data[i].classroom_type == classroom_type) && (json.data[i].name == class_room))
                             {
                                 $("#building1").attr("class", "form-group has-error has-feedback");
                                 $("#building3").attr("class", "glyphicon glyphicon-remove form-control-feedback");
                                 $("#submit").attr("disabled","disabled");
                             };
 
-                            if ((json.data[i].tipo != classroom_type) && (json.data[i].salon == class_room))
+                            if ((json.data[i].classroom_type != classroom_type) && (json.data[i].name == class_room))
                             {
                                 $("#building1").attr("class", "form-group has-success has-feedback");
                                 $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");
                                 $("#submit").removeAttr("disabled");
                             };
 
-                            if ((json.data[i].salon != class_room) && (class_room != ''))
+                            if ((json.data[i].name != class_room) && (class_room != ''))
                             {
                                 $("#building1").attr("class", "form-group has-success has-feedback");
                                 $("#building3").attr("class", "glyphicon glyphicon-ok form-control-feedback");

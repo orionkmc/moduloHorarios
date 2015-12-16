@@ -1,4 +1,4 @@
-function schedule_function(site_url)
+    function schedule_function(site_url)
     {
         var headquarters = $("#headquarters").val();
             $("#building").attr("disabled","disabled");
@@ -22,7 +22,7 @@ function schedule_function(site_url)
                     {
                         html+=
                         '<option value="'+ json[post].id + '" >'+
-                        json[post].edificio +
+                        json[post].name +
                         '</option>';
                     }
                     $("#building").html(html);
@@ -42,7 +42,7 @@ function schedule_function(site_url)
                             for(post in json.data)
                             {
                                 html+=
-                                '<option value="'+ json.data[post].tipo + '" >'+
+                                '<option value="'+ json.data[post].classroom_type + '" >'+
                                 json.data[post].name +
                                 '</option>';
                             }
@@ -58,13 +58,12 @@ function schedule_function(site_url)
                                 $.get(site_url + "/Class_room/class_room_forBC/"+ building + "/" + classroom_type, "", function(data)
                                 {
                                     json = JSON.parse(data);
-                                    console.log(json);
-                                    var html = '<option value="0">Tipo de Salon</option>';
+                                    var html = '<option value="0">Salon</option>';
                                     for(post in json.data)
                                     {
                                         html+=
                                         '<option value="'+ json.data[post].id + '" >'+
-                                        json.data[post].salon +
+                                        json.data[post].name +
                                         '</option>';
                                     }
                                     $("#class_room").html(html);
