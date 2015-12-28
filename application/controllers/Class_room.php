@@ -35,17 +35,19 @@ class Class_room extends CI_Controller
         }
         elseif ($path == 2)
         {
-            /*$this->form_validation->set_message("greater_than[0]", "No has seleccionado ninguna %s.");
+            $this->form_validation->set_message("greater_than", "No has seleccionado ningun %s.");
             $this->form_validation->set_message("required", "El campo %s es requerido.");
 
-            $this->form_validation->set_rules('headquarters', 'Sede', 'greater_than[0]');
+            $this->form_validation->set_rules('headquarters', 'Sede', 'required');
             $this->form_validation->set_rules('building', 'Edificio', 'required');
+            $this->form_validation->set_rules('classroom_type', 'Tipo de Salon', 'greater_than[0]');
+            $this->form_validation->set_rules('class_room', 'Salon', 'required');
             if ($this->form_validation->run() == FALSE) 
             {
                 $this->insert();
             }
             else
-            {*/
+            {
                 if ($this->Class_room_model->insert($this->input))
                 {
                     redirect('Class_room/view/'.$this->input->post('building'), 'refresh');
@@ -55,7 +57,7 @@ class Class_room extends CI_Controller
                     echo "<script>alert('Los datos ya existen');</script>";
                     $this->insert();
                 }
-            /*}*/
+            }
         }
     }
 

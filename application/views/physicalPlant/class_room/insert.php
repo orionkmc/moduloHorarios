@@ -194,9 +194,32 @@
     }
 </script>
 
+<style>
+    #box_classroom_type
+    {
+        padding-left:0px;
+    }
+
+    .clear
+    {
+        clear: both;
+    }
+
+    #more
+    {
+        padding-right: 0px;
+    }
+
+    .other_row
+    {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+</style>
+
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Nuevo Salon</h1>
+        <h1 class="page-header">Nuevo Salon</h1> 
     </div>
 </div>
 
@@ -211,15 +234,33 @@
                         <option value="<?= $key->id ?>" <?= (($current_building !=0) && ($key->id == $current_building[0]->headquarters))  ? "selected" : "" ?> ><?= $key->nombre ?></option>
                     <?php endforeach ?>
                 </select>
+                <?php if (form_error('headquarters')): ?>
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <?= form_error('headquarters') ?>
+                    </div>
+                <?php endif ?>
             </div>
 
             <div class="form-group">
                 <select id="building" class="form-control" name="building">
                     <option value="">Edificio</option>
                 </select>
+                <?php if (form_error('building')): ?>
+                    <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <?= form_error('building') ?>
+                    </div>
+                <?php endif ?>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row other_row">
                 <div id="box_classroom_type" class="col-md-11">
                     <select id="classroom_type" class="form-control" name="classroom_type" <?= $current_building != 0 ? 'autofocus="on"': ''?>>
                         <option value="0">Tipo de Salon</option>
@@ -228,9 +269,18 @@
                         <?php endforeach ?>
                     </select>
                 </div>
-                <div class="col-md-1">
+                <div id="more" class="col-md-1">
                     <button type="button" class="btn btn-default btn-block"><i class="fa fa-plus"></i></button>
                 </div>
+                <?php if (form_error('classroom_type')): ?>
+                    <div class="alert alert-danger alert-dismissible fade in clear" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <?= form_error('classroom_type') ?>
+                    </div>
+                <?php endif ?>
             </div>
             
             <div id="building1" class="form-group has-feedback">

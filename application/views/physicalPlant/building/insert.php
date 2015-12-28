@@ -1,5 +1,5 @@
 <script>
-    $(document).ready(function()
+    /*$(document).ready(function()
     {
         var headquarters = $("#headquarters").val();
         if (headquarters == 0)
@@ -63,7 +63,7 @@
                 });
             });
         });
-    });
+    });*/
 </script>
 <div class="row">
     <div class="col-lg-12">
