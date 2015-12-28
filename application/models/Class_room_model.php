@@ -57,6 +57,25 @@ class Class_room_model extends CI_Model
             return false;
         }
     }
-}
 
+    function delete($id) 
+    {
+        /*if (!*/
+            $this->db->where('cod_edi', $id)->delete('salones');
+            $this->db->last_query();
+            /*) */
+        /*{
+            return FALSE;
+        }
+        
+        if ($this->db->where('id', $id)->delete('building')) 
+        {
+            return TRUE;
+        } 
+        else 
+        {
+            return FALSE;
+        }*/
+    }
+}
 /*SELECT b.name ,a.classroom_type FROM namees a INNER JOIN classroom_type b ON a.classroom_type = b.id WHERE a.building = '41' GROUP BY a.classroom_type, name;*/

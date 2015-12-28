@@ -65,7 +65,9 @@ class Class_room extends CI_Controller
 
     public function class_room($building, $path = 1)
     {
+        $this->load->helper('json_classroom');
         $post = $this->Class_room_model->get($building, $path);
+        $datatables = add_json($post);
         echo '{"data":',  json_encode($post),'}';
     }
 
@@ -73,5 +75,16 @@ class Class_room extends CI_Controller
     {
         $post = $this->Class_room_model->class_room_forBC($building, $classroom_type);
         echo '{"data":',  json_encode($post),'}';
+    }
+
+    public function delete($id)
+    {
+        $this->Class_room_model->delete($id);
+        redirect('Class_room/view', 'refresh');
+    }
+
+    public function update($id)
+    {
+        echo "Registro". $id . "Modificado";
     }
 }

@@ -6,7 +6,8 @@ function loadClass_roomDatatables(site_url, building)
         "columns": [
             { "data": "id" },
             { "data": "name" },
-            { "data": "classroom_type" }
+            { "data": "classroom_type" },
+            { "data": "variable" }
         ]
     });
 }

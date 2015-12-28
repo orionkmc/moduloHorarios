@@ -59,11 +59,12 @@
                         <th>id</th>
                         <th>nombre</th>
                         <th>Tipo salon</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <td class="text-center" title="Nuevo Salon" colspan="3">
+                        <td class="text-center" title="Nuevo Salon" colspan="4">
                             <?= anchor('','<i class="fa fa-plus fa-fw editar"></i>', 'id="more"') ?>
                         </td>
                     </tr>
