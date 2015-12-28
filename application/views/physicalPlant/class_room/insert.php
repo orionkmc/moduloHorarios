@@ -1,6 +1,7 @@
 <script>
     $(document).ready(function()
     {
+        /*cuando no hay una sede ni salon seleccionado*/
         var headquarters = $("#headquarters").val();
         if (headquarters == 0)
         {
@@ -68,6 +69,7 @@
                                         $("#building1").attr("class", "form-group has-error has-feedback");
                                         $("#building3").attr("class", "glyphicon glyphicon-remove form-control-feedback");
                                         $("#submit").attr("disabled","disabled");
+                                        return 0;
                                     };
 
                                     if ((json.data[i].classroom_type != classroom_type) && (json.data[i].name == class_room))
@@ -90,6 +92,7 @@
                 });
             });
         }
+        /*cuando se quiere insertar un salon y hay una sede y un salon seleccionado*/
         else if(headquarters != 0)
         {
             $("#headquarters").attr("disabled","disabled");
@@ -101,8 +104,7 @@
                 var json = JSON.parse(data);
                 var html = '<option value="0">Edificio</option>';
                 for(post in json.data)
-                {   
-                    console.log(json.data);
+                {
                     html += '<option value="' + json.data[post].id + '"' + ((json.data[post].id == <?= isset($current_building[0]->id) ? $current_building[0]->id : 0 ?>) ? ' selected="selected" ' : '') + '>' + json.data[post].name + '</option>';
                 }
                 $("#building").html(html);
@@ -115,6 +117,7 @@
                     $("#class_room").keyup(function(){
                         var class_room = $("#class_room").val();
                         var classroom_type = $("#classroom_type").val();
+                        /*no hay nada q validar, se coloca el lapiz*/
                         if(class_room == '')
                         {
                             $("#building1").attr("class", "form-group has-feedback");
@@ -122,6 +125,7 @@
                             $("#submit").attr("disabled","disabled");
                         };
 
+                        /*cuando un edificio no tiene asignado ningun salon*/
                         if((json.data.length === 0)&&(class_room != ''))
                         {
                             $("#building1").attr("class", "form-group has-success has-feedback");
@@ -130,11 +134,13 @@
                         }
                         for (i in json.data)
                         {
+                            console.log(json.data[i].classroom_type + " = " + classroom_type + " && " + class_room + " = " + json.data[i].name);
                             if ((json.data[i].classroom_type == classroom_type) && (json.data[i].name == class_room))
                             {
                                 $("#building1").attr("class", "form-group has-error has-feedback");
                                 $("#building3").attr("class", "glyphicon glyphicon-remove form-control-feedback");
                                 $("#submit").attr("disabled","disabled");
+                                return 0;
                             };
 
                             if ((json.data[i].classroom_type != classroom_type) && (json.data[i].name == class_room))

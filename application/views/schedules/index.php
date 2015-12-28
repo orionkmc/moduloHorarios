@@ -1,10 +1,10 @@
 <script>
     $(document).ready(function()
     {
+        modal_left();
+        
         var site_url = '<?= site_url() ?>';
         schedule_function(site_url);
-
-        modal_left();
 
         var begin = <?= $begin ?>;
         var end = <?= $end ?>;

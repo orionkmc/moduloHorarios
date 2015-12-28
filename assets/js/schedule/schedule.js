@@ -8,12 +8,11 @@
 
             $("#headquarters").change(function(){
                 var headquarters = $("#headquarters").val()
-                if (headquarters == 0) 
-                {
-                    $("#building").val(0);
-                    $("#classroom_type").val(0);
-                    $("#class_room").val(0);
-                };
+                $("#building").val(0);
+                $("#classroom_type").val(0);
+                $("#classroom_type").attr("disabled","disabled");
+                $("#class_room").val(0);
+                $("#class_room").attr("disabled","disabled");
                 $.get( site_url + "/Building/data_building/"+ headquarters, "", function(data)
                 {
                     var json = JSON.parse(data);
@@ -29,12 +28,9 @@
 
                     $('#building').on("change", function(){
                         var building = $("#building").val();
-                        
-                        if (building == 0) 
-                        {
-                            $("#classroom_type").val(0);
-                            $("#class_room").val(0);
-                        };
+                        $("#classroom_type").val(0);
+                        $("#class_room").val(0);
+                        $("#class_room").attr("disabled","disabled");
                         $.get(site_url + "/Class_room/class_room/"+ building+"/2", "", function(data)
                         {
                             json = JSON.parse(data);
