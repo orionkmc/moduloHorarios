@@ -13,10 +13,11 @@ class Class_room_model extends CI_Model
         if ($path==1) 
         {
             return $this->db->where('building',$_id)->get('classrooms')->result();
+
         }
         else if ($path==2) 
         {
-            return $this->db->group_by(array('classrooms.classroom_type','classroom_type.name'))->order_by('classroom_type', 'ASC')->select('classroom_type.name, classrooms.classroom_type')->from('classrooms')->join('classroom_type', 'classrooms.classroom_type = classroom_type.id')->where('building',$_id)->get()->result();
+            return $this->db->group_by(array('classrooms.classroom_type','classroom_type.name', 'classroom_type.id'))->order_by('classroom_type', 'ASC')->select('classroom_type.name, classrooms.classroom_type, classroom_type.id')->from('classrooms')->join('classroom_type', 'classrooms.classroom_type = classroom_type.id')->where('building',$_id)->get()->result();
             /*print_r($this->db->last_query());*/
         }
     }

@@ -14,7 +14,6 @@ function sumaHoras(inicial, suma)
     
 function calendar(begin, end, blockBegin, blockEnd, schedule)
 {
-    console.log(schedule.data[0].status);
     var calendar = 
         '<table class="table table-bordered">'+
         '<thead>'+

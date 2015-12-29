@@ -16,9 +16,9 @@
         $('#class_room').on("change", function(){
             var headquarters = $("#headquarters option:selected").text();
             var building = $("#building option:selected").text();
-            var class_room = $("#class_room option:selected").text();
-
-            $( ".title" ).html( "sede: " + headquarters + ", Edificio: " + building + ", Salon: " + class_room );
+            var class_room = $("#class_room option:selected").val();
+            var class_room_name = $("#class_room option:selected").text();
+            $( ".title" ).html( "sede: " + headquarters + ", Edificio: " + building + ", Salon: " + class_room_name );
 
             $.get("<?php echo site_url('Schedule/data_schedule/"+ class_room +"') ?>", "", function(data)
             {
@@ -34,7 +34,6 @@
         </div>
     </div>
     <div id="calendar"></div>
-
 
     <div id="modal">
         <div class="col-lg-12">
