@@ -95,6 +95,7 @@
         /*cuando se quiere insertar un salon y hay una sede y un salon seleccionado*/
         else if(headquarters != 0)
         {
+            $("#headquarters_hidden").attr("value", headquarters);
             $("#headquarters").attr("disabled","disabled");
             $("#building").attr("disabled","disabled");
             $("#class_room").attr("disabled","disabled");
@@ -226,9 +227,10 @@
 <div class="row">
     <div class="col-lg-12">
         <?= form_open("Class_room/insert/0/2") ?>
+            <?= form_input(array('id' => 'headquarters_hidden', 'type' => 'hidden', 'name' => 'headquarters')) ?>
             <?= form_input(array('id' => 'building_hidden', 'type' => 'hidden', 'name' => 'building')) ?>
             <div class="form-group">
-                <select id="headquarters" class="form-control" <?= $current_building == 0 ? 'autofocus="on"': ''?>>
+                <select id="headquarters" class="form-control" <?= $current_building == 0 ? 'autofocus="on"': ''?> name="headquarters">
                     <option value="0">Sede</option>
                     <?php foreach ($headquarters as $key): ?>
                         <option value="<?= $key->id ?>" <?= (($current_building !=0) && ($key->id == $current_building[0]->headquarters))  ? "selected" : "" ?> ><?= $key->nombre ?></option>

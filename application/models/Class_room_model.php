@@ -13,12 +13,11 @@ class Class_room_model extends CI_Model
         if ($path==1) 
         {
             return $this->db->where('building',$_id)->get('classrooms')->result();
-            /*print_r($this->db->last_query());*/
         }
         else if ($path==2) 
         {
             return $this->db->group_by(array('classrooms.classroom_type','classroom_type.name'))->order_by('classroom_type', 'ASC')->select('classroom_type.name, classrooms.classroom_type')->from('classrooms')->join('classroom_type', 'classrooms.classroom_type = classroom_type.id')->where('building',$_id)->get()->result();
-             /*print_r($this->db->last_query());*/
+            /*print_r($this->db->last_query());*/
         }
     }
 
@@ -60,22 +59,15 @@ class Class_room_model extends CI_Model
 
     function delete($id) 
     {
-        /*if (!*/
-            $this->db->where('cod_edi', $id)->delete('salones');
-            $this->db->last_query();
-            /*) */
-        /*{
+        $building = $this->db->where('id',$id)->select('building')->get('classrooms')->result();
+        if ($this->db->where('id', $id)->delete('classrooms'))
+        {
+            return $building;
+        }
+        else
+        {
             return FALSE;
         }
-        
-        if ($this->db->where('id', $id)->delete('building')) 
-        {
-            return TRUE;
-        } 
-        else 
-        {
-            return FALSE;
-        }*/
     }
 }
 /*SELECT b.name ,a.classroom_type FROM namees a INNER JOIN classroom_type b ON a.classroom_type = b.id WHERE a.building = '41' GROUP BY a.classroom_type, name;*/

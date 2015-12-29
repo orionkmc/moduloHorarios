@@ -28,6 +28,7 @@
 
                     $('#building').on("change", function(){
                         var building = $("#building").val();
+                        console.log("=) " + building);
                         $("#classroom_type").val(0);
                         $("#class_room").val(0);
                         $("#class_room").attr("disabled","disabled");

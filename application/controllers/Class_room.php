@@ -79,8 +79,8 @@ class Class_room extends CI_Controller
 
     public function delete($id)
     {
-        $this->Class_room_model->delete($id);
-        redirect('Class_room/view', 'refresh');
+        $building = $this->Class_room_model->delete($id);
+        redirect('Class_room/view/'. $building[0]->building, 'refresh');
     }
 
     public function update($id)
