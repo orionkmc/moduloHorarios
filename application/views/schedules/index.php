@@ -76,7 +76,7 @@
             <div class="form-group">
                 <label for="">Dias</label>
                 <select name="begin" class="form-control">
-                    <option value="0">Desde</option>
+                    <option value="1">Desde</option>
                     <option value="1">Lunes</option>
                     <option value="2">Martes</option>
                     <option value="3">Miercoles</option>
@@ -88,7 +88,7 @@
             </div>
             <div class="form-group">
                 <select name="end" class="form-control">
-                    <option value="0">Hasta</option>
+                    <option value="7">Hasta</option>
                     <option value="1">Lunes</option>
                     <option value="2">Martes</option>
                     <option value="3">Miercoles</option>
@@ -101,7 +101,7 @@
             <div class="form-group">
                 <label for="">Horas</label>
                 <select name="blockBegin" class="form-control">
-                    <option value="0">Desde</option>
+                    <option value="1">Desde</option>
                     <?php for ($i=1; $i<=19; $i++ ) : ?>
                         <option value="<?= $i ?>">bloque <?= $i ?></option>
                     <?php endfor ?>
@@ -109,7 +109,7 @@
             </div>
             <div class="form-group">
                 <select name="blockEnd" class="form-control">
-                    <option value="0">Hasta</option>
+                    <option value="19">Hasta</option>
                     <?php for ($i=1; $i<=19; $i++ ) : ?>
                         <option value="<?= $i ?>">bloque <?= $i ?></option>
                     <?php endfor ?>

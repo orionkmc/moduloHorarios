@@ -48,6 +48,7 @@ class Class_room extends CI_Controller
             }
             else
             {
+                /*$this->Class_room_model->insert($this->input);*/
                 if ($this->Class_room_model->insert($this->input))
                 {
                     redirect('Class_room/view/'.$this->input->post('building'), 'refresh');

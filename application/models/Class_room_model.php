@@ -50,6 +50,24 @@ class Class_room_model extends CI_Model
 
         if ($this->db->insert('classrooms', $data))
         {
+            $id_last = $this->db->insert_id();
+            $id_last_schedule = $this->db->order_by('id', 'DESC')->limit(1)->select('id')->get('schedule')->row();
+            isset($id_last_schedule->id) ? $c = $id_last_schedule->id + 1 : $c = 1 ;
+            for ($i=1; $i <= 19  ; $i++) 
+            {
+                for ($j=1; $j <= 7; $j++) 
+                {
+                    $_data = array(
+                        'id' => $c,
+                        'status' => $c,
+                        'classrooms' => $id_last,
+                        'rows' => $i,
+                        'columns' => $j,
+                    );
+                    $this->db->insert('schedule', $_data);
+                    $c++;
+                }
+            }
             return true;
         } 
         else 
@@ -71,4 +89,4 @@ class Class_room_model extends CI_Model
         }
     }
 }
-/*SELECT b.name ,a.classroom_type FROM namees a INNER JOIN classroom_type b ON a.classroom_type = b.id WHERE a.building = '41' GROUP BY a.classroom_type, name;*/
+/*SELECT * FROM schedule ORDER BY id DESC LIMIT 1;*/
