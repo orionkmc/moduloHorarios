@@ -12,20 +12,6 @@ class Schedule extends CI_Controller
 
 	public function index($path = 1)
 	{
-        if ($path == 1) 
-        {
-            $data['begin'] = 1;
-            $data['end'] = 7;
-            $data['blockBegin'] = 1;
-            $data['blockEnd'] = 19;
-        }
-        else
-        {
-            $data['begin'] = $this->input->post('begin');
-            $data['end'] = $this->input->post('end');
-            $data['blockBegin'] = $this->input->post('blockBegin');
-            $data['blockEnd'] = $this->input->post('blockEnd');
-        }
         $_data['schedule'] = 'schedule';
         $this->load->view('base/head', $_data);
         $data['schedule'] = $this->Schedule_model->get(1);

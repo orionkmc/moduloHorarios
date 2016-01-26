@@ -5,11 +5,10 @@
         
         var site_url = '<?= site_url() ?>';
         schedule_function(site_url);
-
-        var begin = <?= $begin ?>;
-        var end = <?= $end ?>;
-        var blockBegin = <?= $blockBegin ?>;
-        var blockEnd = <?= $blockEnd ?>;
+        var begin = $("#begin option:selected").val();
+        var end = $("#end option:selected").val();
+        var blockBegin = $("#blockBegin option:selected").val();
+        var blockEnd = $("#blockEnd option:selected").val();
         var schedule = <?= '{"data":',  json_encode($schedule),'}' ?>;
         calendar(begin, end, blockBegin, blockEnd, schedule);
 
@@ -22,9 +21,32 @@
 
             $.get("<?php echo site_url('Schedule/data_schedule/"+ class_room +"') ?>", "", function(data)
             {
+                var begin = $("#begin option:selected").val();
+                var end = $("#end option:selected").val();
+                var blockBegin = $("#blockBegin option:selected").val();
+                var blockEnd = $("#blockEnd option:selected").val();
                 var schedule = JSON.parse(data);
                 calendar(begin, end, blockBegin, blockEnd, schedule);
             });
+        });           
+
+        $('#begin, #end, #blockBegin, #blockEnd').on("change", function(){
+            var begin = $("#begin option:selected").val();
+            var end = $("#end option:selected").val();
+            var blockBegin = $("#blockBegin option:selected").val();
+            var blockEnd = $("#blockEnd option:selected").val();
+            var schedule = <?= '{"blockEnd":',  json_encode($schedule),'}' ?>;
+
+            var headquarters = $("#headquarters option:selected").text();
+            var building = $("#building option:selected").text();
+            var class_room = $("#class_room option:selected").val();
+            var class_room_name = $("#class_room option:selected").text();
+            $.get("<?php echo site_url('Schedule/data_schedule/"+ class_room +"') ?>", "", function(data)
+            {
+                var schedule = JSON.parse(data);
+                calendar(begin, end, blockBegin, blockEnd, schedule);
+            });
+            calendar(begin, end, blockBegin, blockEnd, schedule);
         });
     });
 </script>
@@ -37,45 +59,45 @@
 
     <div id="modal">
         <div class="col-lg-12">
-        <input id="cerrar-modal" name="modal" type="radio" value="cerrar" /> 
-        <label for="cerrar-modal" class="cerrar" title="Cerrar"><i class="fa fa-times"></i></label>
-            <?= form_open("Building/insert/2") ?>
-                <h3 class="page-header">Filtrar Salon</h3>
-                <div class="form-group">
-                    <select id="headquarters" class="form-control" name="headquarters" required="required" autofocus="on">
-                        <option value="0">Sede</option>
-                        <?php foreach ($headquarters as $key): ?>
-                            <option value="<?= $key->id ?>"><?= $key->nombre ?></option>
-                        <?php endforeach ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select id="building" class="form-control" name="building" required="required" autofocus="on">
-                        <option value="0">Edificio</option>
-                    </select>
-                </div>
+            <input id="cerrar-modal" name="modal" type="radio" value="cerrar" /> 
+            <label for="cerrar-modal" class="cerrar" title="Cerrar"><i class="fa fa-times"></i></label>
                 
-                <div class="form-group">
-                    <select id="classroom_type" class="form-control" name="classroom_type" required="required" autofocus="on">
-                        <option value="0">Tipo de Salon</option>
-                    </select>
-                </div>
+            <h3 class="page-header">Filtrar Salon</h3>
+            <div class="form-group">
+                <select id="headquarters" class="form-control" name="headquarters" required="required" autofocus="on">
+                    <option value="0">Sede</option>
+                    <?php foreach ($headquarters as $key): ?>
+                        <option value="<?= $key->id ?>"><?= $key->nombre ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <select id="building" class="form-control" name="building" required="required" autofocus="on">
+                    <option value="0">Edificio</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <select id="classroom_type" class="form-control" name="classroom_type" required="required" autofocus="on">
+                    <option value="0">Tipo de Salon</option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <select id="class_room" class="form-control" name="class_room" required="required" autofocus="on">
-                        <option value="0">Salon</option>
-                    </select>
-                </div>
-            <?= form_close() ?>
+            <div class="form-group">
+                <select id="class_room" class="form-control" name="class_room" required="required" autofocus="on">
+                    <option value="0">Salon</option>
+                </select>
+            </div>
+
             <label id="label-mostrar-modal" for="mostrar-modal"></label>
             <input id="mostrar-modal" name="modal" type="radio" value="mostrar" />
         </div>
-        
-        <form id="form_schedule" action="<?= site_url('Schedule/index/2') ?>" method="post">
-        <h3 class="page-header">Cambiar dias y horas</h3>
+
+        <div class="col-lg-12">
+            <h3 class="page-header">Cambiar dias y horas</h3>
             <div class="form-group">
                 <label for="">Dias</label>
-                <select name="begin" class="form-control">
+                <select id="begin" name="begin" class="form-control">
                     <option value="1">Desde</option>
                     <option value="1">Lunes</option>
                     <option value="2">Martes</option>
@@ -87,7 +109,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <select name="end" class="form-control">
+                <select id="end" name="end" class="form-control">
                     <option value="7">Hasta</option>
                     <option value="1">Lunes</option>
                     <option value="2">Martes</option>
@@ -100,7 +122,7 @@
             </div>
             <div class="form-group">
                 <label for="">Horas</label>
-                <select name="blockBegin" class="form-control">
+                <select id="blockBegin" name="blockBegin" class="form-control">
                     <option value="1">Desde</option>
                     <?php for ($i=1; $i<=19; $i++ ) : ?>
                         <option value="<?= $i ?>">bloque <?= $i ?></option>
@@ -108,13 +130,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <select name="blockEnd" class="form-control">
+                <select id="blockEnd" name="blockEnd" class="form-control">
                     <option value="19">Hasta</option>
                     <?php for ($i=1; $i<=19; $i++ ) : ?>
                         <option value="<?= $i ?>">bloque <?= $i ?></option>
                     <?php endfor ?>
                 </select>
             </div>
-            <input id="k" class="btn btn-primary" type="submit" value="enviar">
-        </form>
+        </div>
     </div>
