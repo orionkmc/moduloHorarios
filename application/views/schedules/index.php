@@ -5,12 +5,18 @@
         
         var site_url = '<?= site_url() ?>';
         schedule_function(site_url);
+
         var begin = $("#begin option:selected").val();
         var end = $("#end option:selected").val();
         var blockBegin = $("#blockBegin option:selected").val();
         var blockEnd = $("#blockEnd option:selected").val();
         var schedule = <?= '{"data":',  json_encode($schedule),'}' ?>;
         calendar(begin, end, blockBegin, blockEnd, schedule);
+
+        $('td').click(function(e){
+            var id = e.target.id;
+            alert(id);
+        });
 
         $('#class_room').on("change", function(){
             var headquarters = $("#headquarters option:selected").text();
@@ -27,6 +33,10 @@
                 var blockEnd = $("#blockEnd option:selected").val();
                 var schedule = JSON.parse(data);
                 calendar(begin, end, blockBegin, blockEnd, schedule);
+                $('td').click(function(e){
+                    var id = e.target.id;
+                    alert(id);
+                });
             });
         });           
 
@@ -35,7 +45,7 @@
             var end = $("#end option:selected").val();
             var blockBegin = $("#blockBegin option:selected").val();
             var blockEnd = $("#blockEnd option:selected").val();
-            var schedule = <?= '{"blockEnd":',  json_encode($schedule),'}' ?>;
+            var schedule = <?= '{"data":',  json_encode($schedule),'}' ?>;
 
             var headquarters = $("#headquarters option:selected").text();
             var building = $("#building option:selected").text();
@@ -46,7 +56,6 @@
                 var schedule = JSON.parse(data);
                 calendar(begin, end, blockBegin, blockEnd, schedule);
             });
-            calendar(begin, end, blockBegin, blockEnd, schedule);
         });
     });
 </script>

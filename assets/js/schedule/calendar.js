@@ -77,20 +77,18 @@ function calendar(begin, end, blockBegin, blockEnd, schedule)
             (i==18) ? hora = '09:30' : '';
 
             /*(i<18) ? ((i%2)== 1) ? hora = sumaHoras(hora, 45*1) : hora = sumaHoras(hora, 55*1) : hora = sumaHoras(hora, 45*1);*/
-
             
         for (var j = begin; j <= end; j++) 
         {
-            calendar +='<td>';
                 for(k in schedule.data)
                 {
                     if(schedule.data[k].rows == i && schedule.data[k].columns == j){
-                        calendar += schedule.data[k].status;
+                        calendar +='<td id="'+ schedule.data[k].id +'">';
+                            calendar += schedule.data[k].status;
+                        calendar +='</td>';
                         break;
                     }
                 }
-
-            calendar +='</td>';
         }
         calendar +='</tr>';
     };
