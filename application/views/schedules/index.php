@@ -16,7 +16,6 @@
         $('td').click(function(e){ 
             var id = e.target.id;
             $('#exampleModalLabel').html(id);
-
             $('#id_schedule').attr('value', id);
         });
 
@@ -39,6 +38,7 @@
                     $('td').click(function(e){ 
                     var id = e.target.id;
                     $('#exampleModalLabel').html(id);
+                    $('#id_schedule').attr('value', id);
                 });
             });
         });           
@@ -63,13 +63,14 @@
             $('td').click(function(e){ 
                 var id = e.target.id;
                 $('#exampleModalLabel').html(id);
+                $('#id_schedule').attr('value', id);
             });
         });
     });
 </script>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="title page-header">No hay un salon seleccionado</h1>
+            <h1 class="title page-header">sede: Bailadores, Edificio: A, Salon: 1</h1>
         </div>
     </div>
     <div id="calendar"></div>
