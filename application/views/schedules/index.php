@@ -13,10 +13,13 @@
         var schedule = <?= '{"data":',  json_encode($schedule),'}' ?>;
         calendar(begin, end, blockBegin, blockEnd, schedule);
 
-        $('td').click(function(e){
+        $('td').click(function(e){ 
             var id = e.target.id;
-            alert(id);
+            $('#exampleModalLabel').html(id);
+
+            $('#id_schedule').attr('value', id);
         });
+
 
         $('#class_room').on("change", function(){
             var headquarters = $("#headquarters option:selected").text();
@@ -33,9 +36,9 @@
                 var blockEnd = $("#blockEnd option:selected").val();
                 var schedule = JSON.parse(data);
                 calendar(begin, end, blockBegin, blockEnd, schedule);
-                $('td').click(function(e){
+                    $('td').click(function(e){ 
                     var id = e.target.id;
-                    alert(id);
+                    $('#exampleModalLabel').html(id);
                 });
             });
         });           
@@ -45,23 +48,28 @@
             var end = $("#end option:selected").val();
             var blockBegin = $("#blockBegin option:selected").val();
             var blockEnd = $("#blockEnd option:selected").val();
-            var schedule = <?= '{"data":',  json_encode($schedule),'}' ?>;
 
             var headquarters = $("#headquarters option:selected").text();
             var building = $("#building option:selected").text();
             var class_room = $("#class_room option:selected").val();
             var class_room_name = $("#class_room option:selected").text();
+            $( ".title" ).html( "sede: " + headquarters + ", Edificio: " + building + ", Salon: " + class_room_name );
             $.get("<?php echo site_url('Schedule/data_schedule/"+ class_room +"') ?>", "", function(data)
             {
                 var schedule = JSON.parse(data);
-                calendar(begin, end, blockBegin, blockEnd, schedule);
+            });
+            calendar(begin, end, blockBegin, blockEnd, schedule);
+
+            $('td').click(function(e){ 
+                var id = e.target.id;
+                $('#exampleModalLabel').html(id);
             });
         });
     });
 </script>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="title page-header">sede: Bailadores, Edificio: B, Salon: 1</h1>
+            <h1 class="title page-header">No hay un salon seleccionado</h1>
         </div>
     </div>
     <div id="calendar"></div>
@@ -145,6 +153,31 @@
                         <option value="<?= $i ?>">bloque <?= $i ?></option>
                     <?php endfor ?>
                 </select>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                </div>
+                <?= form_open("Schedule/index/2") ?>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <?= form_input(array('type'=>'hidden', 'name'=> 'id', 'value' => '', 'id' => 'id_schedule','placeholder'=>'status')) ?>
+                            <?= form_input(array('name'=> 'status', 'value' => '', 'class' => 'form-control','placeholder'=>'status')) ?>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                <?= form_close() ?>
             </div>
         </div>
     </div>

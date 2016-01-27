@@ -14,15 +14,16 @@ function sumaHoras(inicial, suma)
     
 function calendar(begin, end, blockBegin, blockEnd, schedule)
 {
+    col = parseInt(end)
     var calendar = 
         '<table class="table table-bordered">'+
         '<thead>'+
         '<tr>'+
-            '<th class="medio active" colspan="8">MAÑANA</th>'+
+            '<th class="medio active" colspan="'+ (col+1) +'">MAÑANA</th>'+
         '</tr>'+
         '<tr class="active">'+
             '<th>HOR<span>A</span></th>';
-    for (var j = begin; j <= end; j++) 
+    for (var j = begin; j <= end; j++)
     {
         if (j==1) { calendar +='<th>Lun<span>es</span></th>'; };
         if (j==2) { calendar +='<th>Mar<span>tes</span></th>'; };
@@ -42,14 +43,14 @@ function calendar(begin, end, blockBegin, blockEnd, schedule)
         if (i==9)
         {
             calendar +='<tr>'+
-                '<th class="medio active" colspan="8">TARDE</th>'+
+                '<th class="medio active" colspan="'+ (col+1) +'">TARDE</th>'+
             '</tr>';
         };
 
         if (i==15)
         {
             calendar +='<tr>'+
-                '<th class="medio active" colspan="8">NOCHE</th>'+
+                '<th class="medio active" colspan="'+ (col+1) +'">NOCHE</th>'+
             '</tr>';
         };
 
@@ -57,7 +58,7 @@ function calendar(begin, end, blockBegin, blockEnd, schedule)
             '<tr>'+
             '<td class="hora"> '+ hora +' a '+ sumaHoras(hora, 45*1) +'</td>';
 
-            (i==1) ? hora = '7:45' : '';
+            /*(i==1) ? hora = '7:45' : '';
             (i==2) ? hora = '08:40' : '';
             (i==3) ? hora = '09:25' : '';
             (i==4) ? hora = '10:20' : '';
@@ -74,21 +75,21 @@ function calendar(begin, end, blockBegin, blockEnd, schedule)
             (i==15) ? hora = '07:15' : '';
             (i==16) ? hora = '08:00' : '';
             (i==17) ? hora = '08:45' : '';
-            (i==18) ? hora = '09:30' : '';
+            (i==18) ? hora = '09:30' : '';*/
 
-            /*(i<18) ? ((i%2)== 1) ? hora = sumaHoras(hora, 45*1) : hora = sumaHoras(hora, 55*1) : hora = sumaHoras(hora, 45*1);*/
+            (i<18) ? ((i%2)== 1) ? hora = sumaHoras(hora, 45*1) : hora = sumaHoras(hora, 55*1) : hora = sumaHoras(hora, 45*1);
             
         for (var j = begin; j <= end; j++) 
         {
-                for(k in schedule.data)
-                {
-                    if(schedule.data[k].rows == i && schedule.data[k].columns == j){
-                        calendar +='<td id="'+ schedule.data[k].id +'">';
-                            calendar += schedule.data[k].status;
-                        calendar +='</td>';
-                        break;
-                    }
+            for(k in schedule.data)
+            {
+                if(schedule.data[k].rows == i && schedule.data[k].columns == j){
+                    calendar +='<td id="'+ schedule.data[k].id +'" data-toggle="modal" data-target="#exampleModal">';
+                        calendar += schedule.data[k].status;
+                    calendar +='</td>';
+                    break;
                 }
+            }
         }
         calendar +='</tr>';
     };

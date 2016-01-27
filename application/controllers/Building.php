@@ -29,7 +29,7 @@ class Building extends CI_Controller
             $this->load->view('physicalPlant/building/insert', $data);
             $this->load->view('base/foot');
         }
-        elseif ($path == 2) 
+        elseif ($path == 2)
         {
             $this->form_validation->set_message("greater_than[0]", "No has seleccionado ninguna %s.");
             $this->form_validation->set_message("required", "El campo %s es requerido.");

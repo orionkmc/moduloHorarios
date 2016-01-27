@@ -19,4 +19,23 @@ class Schedule_model extends CI_Model
     {
         return $this->db->where('classrooms',$id)->get('schedule')->result();
     }
+
+    function update($_data)
+    {
+        $data = array(
+            'id' => $_data->post('id'),
+            'status' => $_data->post('status')
+        );
+        $this->db->where('id', $data['id'])->update('schedule', $data);
+        /*print_r($this->db->last_query());*/
+        
+        /*if ($this->db->where('id', $data->id)->update('building', $data)) 
+        {
+            return TRUE;
+        }
+        else 
+        {
+            return FALSE;
+        }*/
+    }
 }
